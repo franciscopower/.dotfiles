@@ -1,12 +1,16 @@
 #!/bin/bash
 
-if [ "$HOME/.dotfiles" != "$PWD" ]
-then 
-	echo "Setup script cannot be run." 
-	echo "To run the scrip, mas sure the current directory is $HOME/.dotfiles"
-	echo "To do so, place the .dotfiles directory in the $HOME directory and run the setup script from inside the .dotfiles directory."
-	exit 1
+if [ $# -ne 1 ]
+then
+	echo Installation will be done assuming this repo is located in the user home directory.
+	folder=$(dirname $PWD)
+	username=$(basename $folder)
+else
+	username=$1
+	folder="/home/$1"
+	echo Installation will be done on the home directory $folder.
 fi
+
 
 echo "Starting setup script..."
 echo -e "\n -----------------------------------------------"
@@ -29,6 +33,8 @@ yes | apt install zsh
 echo -e "\n -----------------------------------------------"
 
 echo -e "\n Creating symbolic links\n"
-ln -s $PWD/.zshrc $HOME/.zshrc
-ln -s $PWD/.vimrc $HOME/.vimrc
-ln -s $PWD/.gitconfig $HOME/.gitconfig
+ln -s $PWD/.zshrc $folder/.zshrc
+ln -s $PWD/.vimrc $folder/.vimrc
+ln -s $PWD/.gitconfig $folder/.gitconfig
+
+chown -R $username:$username $folder
