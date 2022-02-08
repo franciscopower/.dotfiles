@@ -1,5 +1,5 @@
 #Set ZSH directory
-ZSH=$HOME/.dotfiles/zsh_config
+ZSH=$HOME/.dotfiles/zsh
 
 #set history
 setopt histignorealldups sharehistory
