@@ -2,9 +2,8 @@
 
 if [ $# -ne 1 ]
 then
-	echo Installation will be done assuming this repo is located in the user home directory.
-	folder=$(dirname $PWD)
-	username=$(basename $folder)
+	echo "Usage: sudo ./setup.sh <username>"
+	exit 0
 else
 	username=$1
 	folder="/home/$1"
