@@ -45,3 +45,5 @@ source "$ZSH/zsh_prompt.sh"
 
 #source plugins
 source "$ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+bindkey '^ ' autosuggest-accept

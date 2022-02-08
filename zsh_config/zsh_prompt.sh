@@ -108,7 +108,6 @@ user_bubble (){
 dir_bubble (){
     echo -n "%F{$c_folder}%f%K{$c_folder} %(4~|%-1~/…/%2~|%3~)%k%F{$c_folder}%f"
 }
- 
 
 RPROMPT='$(git_bubble)'
 
