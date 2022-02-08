@@ -25,15 +25,20 @@ echo -e "\n -----------------------------------------------"
 
 echo -e "\n Installing Dependecies..."
 # install dependencies
-yes | apt install vim
+yes | apt install neovim
 yes | apt install htop 
 yes | apt install neofetch  
 yes | apt install zsh 
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 echo -e "\n -----------------------------------------------"
 
 echo -e "\n Creating symbolic links\n"
 ln -s $PWD/.zshrc $folder/.zshrc
 ln -s $PWD/.vimrc $folder/.vimrc
 ln -s $PWD/.gitconfig $folder/.gitconfig
+ln -s $PWD/nvim $folder/.config/nvim
 
 chown -R $username:$username $folder
