@@ -10,3 +10,15 @@ alias fgrep='fgrep --color=auto'
 alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
+
+alias ...='cd .. && cd ..'
+
+mmv () {
+  mkdir $1
+  cd $1
+}
+
+cdl () {
+  cd $1
+  ls
+}

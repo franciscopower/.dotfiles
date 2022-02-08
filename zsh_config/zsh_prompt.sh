@@ -24,7 +24,6 @@ git_unstaged_color='yellow'
 git_staged_color='magenta'
 git_stashed_color='blue'
 git_unmerged_color='red'
-git_symbols_color='black'
 
 # GIT ---------------------------------------------------
 
@@ -90,7 +89,6 @@ git_bubble () {
         fi
 
 		echo -n " %F{$git_color}$git_symbols%f%F{$git_color}%f%K{$git_color}%F{black}$git_info%f%k%F{$git_color}%f"
-        #echo -n "$(bubblify 0 "$git_info " $git_color $bubble_color)$(bubblify 2 " $git_symbols" $git_symbols_color $git_color) "
     fi
 }
 # git  ---------------------------------------------------
