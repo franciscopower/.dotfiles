@@ -26,6 +26,7 @@ echo -e "\n -----------------------------------------------"
 echo -e "\n Installing Dependecies..."
 # install dependencies
 yes | apt install neovim
+yes | apt install vim
 yes | apt install htop 
 yes | apt install neofetch  
 yes | apt install zsh 
