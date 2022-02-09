@@ -25,6 +25,9 @@ echo -e "\n -----------------------------------------------"
 
 echo -e "\n Installing Dependecies..."
 # install dependencies
+yes | apt install python3
+yes | apt install python3-pip
+yes | apt install ranger
 yes | apt install neovim
 yes | apt install vim
 yes | apt install htop 

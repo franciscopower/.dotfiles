@@ -20,6 +20,10 @@ zstyle :compinstall filename '/home/fpower/.zshrc'
 autoload -Uz compinit
 compinit
 
+#set default editor
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
+
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
