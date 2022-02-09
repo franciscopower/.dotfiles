@@ -10,9 +10,6 @@ HISTFILE=~/.zsh_history
 setopt autocd extendedglob nomatch MENU_COMPLETE
 unsetopt beep
 
-# Use VIM keybindings
-bindkey -v
-bindkey "^R" history-incremental-search-backward
 
 zstyle :compinstall filename '/home/fpower/.zshrc'
 
@@ -51,4 +48,8 @@ source "$ZSH/zsh_prompt.sh"
 #source plugins
 source "$ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-bindkey '^a' autosuggest-accept
+
+# Keybindings
+bindkey -v
+bindkey "^R" history-incremental-search-backward
+bindkey '^k' autosuggest-accept

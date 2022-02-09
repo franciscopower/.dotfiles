@@ -1,7 +1,8 @@
 alias ls='ls --color=auto'
 alias l='ls -la'
 alias nv='nvim'
-alias fs='ranger'
+alias vn='nvim'
+alias ra='ranger'
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'

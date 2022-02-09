@@ -5,8 +5,10 @@ precmd() { print "" }
 autoload -Uz colors && colors
 # User defined colors
 c_yellow=214
-c_user=024
-c_folder=024
+cb_user=024
+cf_user=015
+cb_folder=024
+cf_folder=015
 
 git_branch_symbol=''
 git_clean_symbol=''
@@ -102,11 +104,11 @@ ssh_bubble () {
 }
 
 user_bubble (){
-    echo -n "%F{$c_user}%f%K{$c_user} %B%n%b%k%F{$c_user}%f"
+    echo -n "%F{$cb_user}%f%K{$cb_user}%F{$cf_user} %B%n%b%f%k%F{$cb_user}%f"
 }
 
 dir_bubble (){
-    echo -n "%F{$c_folder}%f%K{$c_folder} %(4~|%-1~/…/%2~|%3~)%k%F{$c_folder}%f"
+    echo -n "%F{$cb_folder}%f%K{$cb_folder}%F{$cf_folder} %(4~|%-1~/…/%2~|%3~)%f%k%F{$cb_folder}%f"
 }
 
 RPROMPT='$(git_bubble)'
