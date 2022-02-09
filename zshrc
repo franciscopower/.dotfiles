@@ -46,6 +46,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 #source other config files
 source "$ZSH/zsh_aliases.sh"
 source "$ZSH/zsh_prompt.sh"
+# source "$ZSH/zsh_functions.sh"
 
 #source plugins
 source "$ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
