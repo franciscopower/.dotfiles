@@ -111,7 +111,44 @@ dir_bubble (){
     echo -n "%F{$cb_folder}%f%K{$cb_folder}%F{$cf_folder} %(4~|%-1~/…/%2~|%3~)%f%k%F{$cb_folder}%f"
 }
 
+# VI MODE INDICATOR ---------------------------------------
+
+setopt PROMPT_SUBST
+
+vim_ins_mode="%F{$c_yellow}%f"
+vim_cmd_mode="%F{green}%f"
+
+vim_mode=$vim_ins_mode
+echo -ne '\e[5 q'	# beam
+
+function zle-keymap-select {
+  # vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+
+	case $KEYMAP in
+		vicmd) 
+			echo -ne '\e[1 q'	 # block
+			vim_mode="${vim_cmd_mode}"
+			;;
+		viins|main) 
+			echo -ne '\e[5 q'	# beam
+			vim_mode="${vim_ins_mode}"
+			;;
+	esac
+	zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-finish {
+  vim_mode=$vim_ins_mode
+}
+zle -N zle-line-finish
+
+# vi mode indicator ---------------------------------------
+
+# SET PROMPT ---------------------------------------------- 
+
 RPROMPT='$(git_bubble)'
 
 PROMPT='$(ssh_bubble)$(user_bubble) in $(dir_bubble) %(?.%F{green}%f.%F{red}%f) 
-%F{$c_yellow}%f '
+${vim_mode} '
+
