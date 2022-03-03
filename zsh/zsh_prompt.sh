@@ -122,8 +122,6 @@ vim_mode=$vim_ins_mode
 echo -ne '\e[5 q'	# beam
 
 function zle-keymap-select {
-  # vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-
 	case $KEYMAP in
 		vicmd) 
 			echo -ne '\e[1 q'	 # block

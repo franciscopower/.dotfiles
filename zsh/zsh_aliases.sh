@@ -9,11 +9,6 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# confirm before overwriting something
-alias cp="cp -i"
-alias mv='mv -i'
-alias rm='rm -i'
-
 alias ...='cd .. && cd ..'
 
 mmv () {
@@ -24,4 +19,10 @@ mmv () {
 cdl () {
   cd $1
   ls
+}
+
+c () {
+  rm $1
+  make $1
+  ./$1
 }
