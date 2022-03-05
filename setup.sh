@@ -39,6 +39,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 echo -e "\n -----------------------------------------------"
 
+touch $PWD/zsh/zsh_local_aliases.sh
+
 echo -e "\n Creating symbolic links\n"
 ln -s $PWD/zshrc $folder/.zshrc
 ln -s $PWD/vimrc $folder/.vimrc
