@@ -11,6 +11,8 @@ alias fgrep='fgrep --color=auto'
 
 alias ...='cd .. && cd ..'
 
+alias snv='sudo -E -s nvim' # use Neovim as sudo but preserve environment
+
 mmv () {
   mkdir $1
   cd $1
