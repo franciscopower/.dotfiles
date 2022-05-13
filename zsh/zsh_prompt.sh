@@ -10,6 +10,10 @@ cf_user=015
 cb_folder=024
 cf_folder=015
 
+if [ "$USER" = root ] ; then
+	cb_user=1
+fi
+
 git_branch_symbol=''
 git_clean_symbol=''
 git_modified_symbol='•'
@@ -104,7 +108,7 @@ ssh_bubble () {
 }
 
 user_bubble (){
-    echo -n "%F{$cb_user}%f%K{$cb_user}%F{$cf_user} %B%n%b%f%k%F{$cb_user}%f"
+		echo -n "%F{$cb_user}%f%K{$cb_user}%F{$cf_user} %B%n%b%f%k%F{$cb_user}%f"
 }
 
 dir_bubble (){

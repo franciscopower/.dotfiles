@@ -10,7 +10,7 @@ HISTFILE=~/.zsh_history
 setopt autocd extendedglob nomatch MENU_COMPLETE
 unsetopt beep
 
-zstyle :compinstall filename '/home/fpower/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 # Use modern completion system
 autoload -Uz compinit

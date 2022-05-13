@@ -46,5 +46,7 @@ ln -s $PWD/zshrc $folder/.zshrc
 ln -s $PWD/vimrc $folder/.vimrc
 ln -s $PWD/gitconfig $folder/.gitconfig
 ln -s $PWD/nvim $folder/.config/nvim
+ln -s $PWD/zshrc /root/.zshrc
+ln -s $PWD /root/.dotfiles
 
 chown -R $username:$username $folder

@@ -34,3 +34,5 @@ colorscheme ayu
 
 nmap <C-t> :NERDTreeToggle<CR>
 nmap <C-f> :NERDTreeFocus<CR>
+nmap <C-l> :bnext<CR>
+nmap <C-j> :bprevious<CR>
