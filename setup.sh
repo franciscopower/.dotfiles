@@ -42,11 +42,17 @@ echo -e "\n -----------------------------------------------"
 touch $PWD/zsh/zsh_local_aliases.sh
 
 echo -e "\n Creating symbolic links\n"
+
+mv $folder/.bashrc $folder/.bashrc.bk
+mv /root/.bashrc /root/.bashrc.bk
+
 ln -s $PWD/zshrc $folder/.zshrc
+ln -s $PWD/bashrc $folder/.bashrc
 ln -s $PWD/vimrc $folder/.vimrc
 ln -s $PWD/gitconfig $folder/.gitconfig
 ln -s $PWD/nvim $folder/.config/nvim
 ln -s $PWD/zshrc /root/.zshrc
+ln -s $PWD/bashrc /root/.bashrc
 ln -s $PWD /root/.dotfiles
 
 chown -R $username:$username $folder
