@@ -37,11 +37,33 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
 #source other config files
-source "$ZSH/zsh_aliases.sh"
-source "$ZSH/zsh_local_aliases.sh"
-source "$ZSH/zsh_prompt.sh"
-# source "$ZSH/zsh_functions.sh"
+if [ -f $ZSH/zsh_aliases.sh ]; then
+	source "$ZSH/zsh_aliases.sh"
+fi
+if [ -f $ZSH/zsh_local_aliases.sh ]; then
+	source "$ZSH/zsh_local_aliases.sh"
+fi
+if [ -f $ZSH/zsh_prompt.sh ]; then
+	source "$ZSH/zsh_prompt.sh"
+else 
+	PROMPT="%n in %1d > "
+fi
+if [ -f $ZSH/zsh_functions.sh ]; then
+	source "$ZSH/zsh_functions.sh"
+fi
 
 #source plugins
 source "$ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
