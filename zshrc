@@ -1,5 +1,6 @@
 #Set ZSH directory
 ZSH=$HOME/.dotfiles/zsh
+DOT=$HOME/.dotfiles
 
 #set history
 setopt histignorealldups sharehistory
@@ -50,11 +51,11 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 #source other config files
-if [ -f $ZSH/zsh_aliases.sh ]; then
-	source "$ZSH/zsh_aliases.sh"
+if [ -f $DOT/alias_files/aliases.sh ]; then
+	source "$DOT/alias_files/aliases.sh"
 fi
-if [ -f $ZSH/zsh_local_aliases.sh ]; then
-	source "$ZSH/zsh_local_aliases.sh"
+if [ -f $DOT/alias_files/local_aliases.sh ]; then
+	source "$DOT/alias_files/local_aliases.sh"
 fi
 if [ -f $ZSH/zsh_prompt.sh ]; then
 	source "$ZSH/zsh_prompt.sh"

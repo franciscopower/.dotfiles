@@ -1,5 +1,6 @@
 #Set BASH directory
 BASH=$HOME/.dotfiles/bash
+DOT=$HOME/.dotfiles
 
 # If not running interactively, don't do anything
 case $- in
@@ -54,11 +55,11 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 #source other config files
-if [ -f $BASH/bash_aliases.sh ]; then
-	source "$BASH/bash_aliases.sh"
+if [ -f $DOT/alias_files/aliases.sh ]; then
+	source "$DOT/alias_files/aliases.sh"
 fi
-if [ -f $BASH/bash_local_aliases.sh ]; then
-	source "$BASH/bash_local_aliases.sh"
+if [ -f $DOT/alias_files/local_aliases.sh ]; then
+	source "$DOT/alias_files/local_aliases.sh"
 fi
 if [ -f $BASH/bash_prompt.sh ]; then
 	source "$BASH/bash_prompt.sh"
