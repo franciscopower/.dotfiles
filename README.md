@@ -49,9 +49,12 @@ The setup script performs the following actions:
 3. Install neovim plugins:
     1. Open the init.vim file in neovim: `nvim nvim/init.vim`
     2. Run the plugin install command: `:PlugInstall`
-4. Set zsh as the default shell:
+4. Choose the default shell. Apply the following commands as root user (execute `sudo su` before the commands) if you want to have your costumizations in root too.
   ```bash
+  # for zsh
   chsh -s $(which zsh)
+  # for bash
+  chsh -s $(which bash)
   ```
 5. Restart the terminal.
   
