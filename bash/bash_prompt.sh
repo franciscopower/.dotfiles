@@ -9,14 +9,14 @@ CYAN="\[\033[0;36m\]"
 CYAN_BOLD="\[\033[01;36m\]"
 WHITE="\[\033[0;37m\]"
 
-OK="${GREEN}[OK]${NORMAL}"
-NOK="${RED}[NOK]${NORMAL}"
+OK="${GREEN}$(echo -e "\u2713")${NORMAL}"
+NOK="${RED}$(echo -e "\u2718")${NORMAL}"
 
 SELECT_RESULT="if [ \$? = 0 ]; then echo \"${OK}\"; else echo \"${NOK}\"; fi"
 
 USER_COLOR=$CYAN_BOLD
 if [ $USER = "root" ]; then
-	USER_COLOR=$RED_BOLD
+        USER_COLOR=$RED_BOLD
 fi
 
 function git_branch() {
@@ -25,6 +25,6 @@ function git_branch() {
     fi
 }
 
-# Throw it all together 
-PS1="\n${RESET}${USER_COLOR}\u${NORMAL} ${WHITE}in${NORMAL} ${CYAN_BOLD}\W${NORMAL} \`${SELECT_RESULT}\` 
-${YELLOW}\$(git_branch) >${NORMAL} "
+# Throw it all together
+PS1="\n${RESET}${USER_COLOR}\u${NORMAL} ${WHITE}in${NORMAL} ${CYAN_BOLD}\W${NORMAL} \`${SELECT_RESULT}\`
+${YELLOW}\$(git_branch) $(echo -e "\u25BA")${NORMAL} "
