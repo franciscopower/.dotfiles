@@ -3,6 +3,7 @@ alias nv='nvim'
 alias vn='nvim'
 alias ra='ranger'
 
+alias ..='cd ..'
 alias ...='cd .. && cd ..'
 
 alias snv='sudo -E -s nvim' # use Neovim as sudo but preserve environment
