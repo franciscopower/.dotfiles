@@ -18,9 +18,11 @@ touch $PWD/local_configs.sh
 mv $folder/.bashrc $folder/.bashrc.bk
 mv /root/.bashrc /root/.bashrc.bk
 
-ln -s $PWD/bashrc $folder/.bashrc
+ln -s $PWD/bash/bashrc $folder/.bashrc
 ln -s $PWD/vimrc $folder/.vimrc
-ln -s $PWD/bashrc /root/.bashrc
+# add settings to superuser too
 ln -s $PWD /root/.dotfiles
+ln -s $PWD/bash/bashrc /root/.bashrc
+ln -s $PWD/vimrc /root/.vimrc
 
 chown -R $username:$username $folder
