@@ -55,11 +55,11 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 #source other config files
-if [ -f $DOT/alias_files/aliases.sh ]; then
-	source "$DOT/alias_files/aliases.sh"
+if [ -f $DOT/aliases.sh ]; then
+	source "$DOT/aliases.sh"
 fi
-if [ -f $DOT/alias_files/local_aliases.sh ]; then
-	source "$DOT/alias_files/local_aliases.sh"
+if [ -f $DOT/local_configs.sh ]; then
+	source "$DOT/local_configs.sh"
 fi
 if [ -f $BASH/bash_prompt.sh ]; then
 	source "$BASH/bash_prompt.sh"
