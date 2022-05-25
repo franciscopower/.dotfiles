@@ -61,6 +61,10 @@ set laststatus=2
 set showmode
 set showcmd
 
+" esc in insert & visual mode
+inoremap kj <esc>
+vnoremap kj <esc>
+
 " Searching
 nnoremap / /\v
 vnoremap / /\v
@@ -82,3 +86,5 @@ set listchars=tab:▸\ ,eol:¬
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 set mouse=a
+
+colorscheme pablo
