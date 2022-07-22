@@ -62,8 +62,8 @@ set showmode
 set showcmd
 
 " esc in insert & visual mode
-inoremap kj <esc>
-vnoremap kj <esc>
+inoremap tf <esc>
+vnoremap tf <esc>
 
 " Searching
 nnoremap / /\v
