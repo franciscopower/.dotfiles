@@ -1,2 +1,3 @@
 *.swo
 local_aliases.sh
+packer_compiled.lua
