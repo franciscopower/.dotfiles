@@ -1,60 +1,30 @@
-# Dotfiles
+# .dotfiles
 
-*My Linux (debian) terminal configuration files.*
+This repository contains my windows and linux setups, as well as the configuration of nvim.
 
+## NVim configuration
 
-## Contents
+### Dependencies
 
-This repository consists of:
-- ZSH shell configuration files:
-  + Custom prompt with vi keybindings and vi mode indicator, git status indicator and SSH connection indicator;
-  + Aliases
-  + Plugins:
-    + zsh-syntax-highlighting;
-    + zsh-autosuggestions.
-- Basic vim configuration file (vimrc);,
-- Neovim configuration file (nvim/init.vim)
-- Git configuration file (gitconfig)
-- Setup script
+0. NVim
+    - [NVim for windows](https://neovim.io/)
+1. C Compiler (gcc)
+    - For windows: [MSYS2](https://code.visualstudio.com/docs/languages/cpp)
+2. Packer - Nvim Plugin manager
+    - [Packer Github](https://github.com/wbthomason/packer.nvim)
 
-## Setup script
+### Windows Instalation
 
-The setup script performs the following actions:
-- Verifies that the script is being run from inside the .dotfiles repository in the user's home folder;
-- Updates and upgrades packages;
-- Installs:
-  + Python3
-  + Pip3
-  + ranger
-  + neovim
-  + vim
-  + htop
-  + neofetch
-  + zsh
-- Installs vim-plug (neovim plugin manager)
-- Creates symbolic links from the configuration files in the .dotfiles repository to the place where they need to be in the user's home directory for the terminal to run.
+After manually installing the dependencies, run:
 
-## Setup process
+```ps
+cp -r nvim $HOME\AppData\Local
+```
 
-1. Clone this repository into your home folder:
-  ```bash
-  cd $HOME
-  git clone https://github.com/franciscopower/.dotfiles.git
-  cd .dotfiles
-  ```
-2. Run the setup script:
-  ```bash
-  sudo ./setup.sh [USERNAME]
-  ```
-3. Install neovim plugins:
-    1. Open the init.vim file in neovim: `nvim nvim/init.vim`
-    2. Run the plugin install command: `:PlugInstall`
-4. Choose the default shell. Apply the following commands as root user (execute `sudo su` before the commands) if you want to have your costumizations in root too.
-  ```bash
-  # for zsh
-  chsh -s $(which zsh)
-  # for bash
-  chsh -s $(which bash)
-  ```
-5. Restart the terminal.
-  
+Then open a NVim session. Some errors will appear because the plugins are not installed yet.
+To install the pugins, run the following NVim command: `:PackerSync`.
+
+Close and reopen nvim and the errors should be gone. 
+
+The LSP provider used is `Mason`. To install support for a specific language, run `:Mason`
+
