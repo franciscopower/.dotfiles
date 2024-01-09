@@ -29,7 +29,6 @@ yes | apt install python3
 yes | apt install python3-pip
 yes | apt install ranger
 yes | apt install neovim
-yes | apt install vim
 yes | apt install htop 
 yes | apt install neofetch  
 yes | apt install zsh 

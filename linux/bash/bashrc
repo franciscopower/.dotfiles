@@ -1,6 +1,6 @@
 #Set BASH directory
-BASH=$HOME/.dotfiles/bash
-DOT=$HOME/.dotfiles
+BASH=$HOME/.dotfiles/linux/bash
+DOT=$HOME/.dotfiles/linux
 
 # If not running interactively, don't do anything
 case $- in
