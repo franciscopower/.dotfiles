@@ -1,23 +1,34 @@
 #Imports
 Import-Module -Name Terminal-Icons
 Import-Module -Name posh-git
+Import-Module -Name BurntToast
+Set-PSReadlineOption -EditMode vi
 
-New-Alias v nvim
-
-function xp {Explorer .}
-function gaa {git add .}
-function gl {git log --oneline}
-function gc {git commit -m "$args[0]"}
+#general aliases
+Set-Alias -Name v -Value nvim
+Set-Alias -Name ai -Value GPTerminal.exe
+Set-Alias -Name xp -Value explorer
+function say-done {New-BurntToastNotification -Text "The task is done!"}
+function cpath {(Get-Location).Path | Set-Clipboard}
+#git aliases
 function gs {git status}
+function gaa {git add .}
+function glog {git log --oneline}
+function gc {git commit -m "$args[0]"}
+function gstat {git status}
 function gtree {git log --all --graph}
+#path aliases
 function dev {cd C:\dev}
+function v {cd "C:\Users\pof1av\OneDrive - Bosch Group\VAULT"}
 function c {cd C:\}
-function franc {cd $home}
+function me {cd $home}
 function .. {cd ..}
 function ... {cd ../..}
-function cumulus {ssh -p 314 fp-server@192.168.0.201}
-function nvimconfig {cd $home\AppData\Local\nvim}
+function nvimconfig { cd $home\AppData\Local\nvim }
 
+#functions
+
+#General settings
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 #------------------------------------------------------------------------------
@@ -59,8 +70,8 @@ function prompt {
     #Decorate the CMD Prompt
     Write-Host ""
     Write-host ($(if ($IsAdmin) { 'ELEVATED ' } else { '' })) -ForegroundColor Red -NoNewline
-    Write-Host "$($CmdPromptUser.Name.split("\")[1]) " -ForegroundColor DarkCyan -NoNewline
-    Write-Host "in " -ForegroundColor White -NoNewline
+    Write-Host " $($CmdPromptUser.Name.split("\")[1]) " -ForegroundColor DarkCyan -NoNewline
+    Write-Host "in" -ForegroundColor White -NoNewline
 
     If ($CmdPromptCurrentFolder -like "*:*") {
         Write-Host " $CmdPromptCurrentFolder "  -ForegroundColor DarkCyan -NoNewline
@@ -77,7 +88,8 @@ function prompt {
         Write-Host "[NOK]" -ForegroundColor red -NoNewline
     }
 
-    Write-Host ""
+    Write-Host "" #New line
+
     if (Test-Path .git) {
         Write-BranchName
     }
