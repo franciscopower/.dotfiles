@@ -2,7 +2,7 @@
 Import-Module -Name Terminal-Icons
 Import-Module -Name posh-git
 Import-Module -Name BurntToast
-Set-PSReadlineOption -EditMode vi
+Import-Module -Name PSFzf # requires `winget install fzf`
 
 #general aliases
 Set-Alias -Name v -Value nvim
@@ -26,10 +26,15 @@ function .. {cd ..}
 function ... {cd ../..}
 function nvimconfig { cd $home\AppData\Local\nvim }
 
-#functions
-
 #General settings
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineOption -PredictionSource History 
+Set-PSReadLineOption -PredictionViewStyle ListView 
+Set-PSReadlineOption -EditMode vi
+
+Invoke-Expression (& { (zoxide init powershell | Out-String) }) # zoxide - a better CD
+$env:FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview 'bat -n --color=always {}'"
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 
 #------------------------------------------------------------------------------
 # PROMPT
@@ -77,7 +82,7 @@ function prompt {
         Write-Host " $CmdPromptCurrentFolder "  -ForegroundColor DarkCyan -NoNewline
     }
     else {
-        Write-Host ".\$CmdPromptCurrentFolder\ "  -ForegroundColor DarkCyan -NoNewline
+        Write-Host " .\$CmdPromptCurrentFolder\ "  -ForegroundColor DarkCyan -NoNewline
     }
     Write-host ($(if ($PathInfo.IsUnc){ '(online) ' } else { '' })) -ForegroundColor DarkYellow -NoNewline
 
