@@ -27,12 +27,11 @@ function ... {cd ../..}
 function nvimconfig { cd $home\AppData\Local\nvim }
 
 #General settings
+Set-PSReadlineOption -EditMode vi
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadLineOption -PredictionSource History 
-Set-PSReadLineOption -PredictionViewStyle ListView 
-Set-PSReadlineOption -EditMode vi
+# Set-PSReadLineOption -PredictionViewStyle ListView 
 
-Invoke-Expression (& { (zoxide init powershell | Out-String) }) # zoxide - a better CD
 $env:FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview 'bat -n --color=always {}'"
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 
@@ -108,3 +107,5 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
+
+Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) }) # zoxide - a better CD
