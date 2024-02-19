@@ -1,3 +1,10 @@
 [user]
 	email = 33499683+franciscopower@users.noreply.github.com
 	name = Francisco Power
+[alias]
+	st = status -sb
+    	last = log -1 HEAD --stat
+    	ll = !git log --pretty=format:\"%C(yellow)%h%Creset -%C(red)%d%Creset %s %C(green)(%cr) [%an]\"
+	cm = commit -m
+    	tree = log --oneline --graph
+    	br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
