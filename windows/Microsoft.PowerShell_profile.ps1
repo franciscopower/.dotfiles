@@ -10,13 +10,6 @@ Set-Alias -Name ai -Value GPTerminal.exe
 Set-Alias -Name xp -Value explorer
 function say-done {New-BurntToastNotification -Text "The task is done!"}
 function cpath {(Get-Location).Path | Set-Clipboard}
-#git aliases
-function gs {git status}
-function gaa {git add .}
-function glog {git log --oneline}
-function gc {git commit -m "$args[0]"}
-function gstat {git status}
-function gtree {git log --all --graph}
 #path aliases
 function dev {cd C:\dev}
 function v {cd "C:\Users\pof1av\OneDrive - Bosch Group\VAULT"}
