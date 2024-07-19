@@ -1,0 +1,270 @@
+{
+  "main": {
+    "id": "ffb26b5b5708d382",
+    "type": "split",
+    "children": [
+      {
+        "id": "3a2e3e3e030cfe99",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cd9fc40244655416",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "🏛 Home.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0a80b1710321b055",
+    "type": "split",
+    "children": [
+      {
+        "id": "dd28b2f1cee01221",
+        "type": "tabs",
+        "dimension": 56.58627087198515,
+        "children": [
+          {
+            "id": "63cb30e76b604153",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "28caa70236cf3af5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "57bc23d7512b8530",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#project  ",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "6fa191f7f92f80c2",
+        "type": "tabs",
+        "dimension": 43.41372912801485,
+        "children": [
+          {
+            "id": "d3842e0cbe24237a",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {}
+            }
+          },
+          {
+            "id": "69502a2b7f70e3c6",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 282.5
+  },
+  "right": {
+    "id": "6dd491c0ba7fee4b",
+    "type": "split",
+    "children": [
+      {
+        "id": "abdeb095f6c675b8",
+        "type": "tabs",
+        "dimension": 54.64895635673624,
+        "children": [
+          {
+            "id": "454799152f76206b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "🏛 Home.md"
+              }
+            }
+          },
+          {
+            "id": "c40250ee70229119",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "d9521c0c803e59c5",
+        "type": "tabs",
+        "dimension": 45.35104364326376,
+        "children": [
+          {
+            "id": "18ff0eb2095db353",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "🏛 Home.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 0.7132754626224436,
+                  "close": true
+                }
+              }
+            }
+          },
+          {
+            "id": "259caeea963d9486",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "🏛 Home.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "242695e5cdde6dc5",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "🏛 Home.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 351.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": true,
+      "homepage:Open homepage": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": true,
+      "audio-recorder:Start/stop recording": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "obsidian-textgenerator-plugin:Generate Text!": true,
+      "obsidian-textgenerator-plugin:Text Generator: Templates Packages Manager": true,
+      "oz-clear-unused-images:Clear Unused Images": false,
+      "hidden-folder-obsidian:Show Folders": false
+    }
+  },
+  "active": "cd9fc40244655416",
+  "lastOpenFiles": [
+    "textgenerator/prompts/vision/askGPT4.md",
+    "🏛 Home.md",
+    "textgenerator/prompts/vision/describe_Images.md",
+    "textgenerator/prompts/vision",
+    "res/Pasted image 20231124195535.png",
+    "1 ATLAS/Career/Be an Engineer - Masterplan.md",
+    "1 ATLAS/Career/Job hunting.md",
+    "1 ATLAS/Career/GMV - Software Engineer - Positioning Services.md",
+    "1 ATLAS/Career/Job applications status.md",
+    "0 SPARK/Command line.md",
+    "0 SPARK/Random Ideas.md",
+    "0 SPARK/How to create Tags.md",
+    "0 SPARK/How to Register ideas.md",
+    "0 SPARK/Keyboard Shortcuts.md",
+    "2 GENIUS/Engineering Knowledge bank/HTML and CSS/Html tricks.md",
+    "2 GENIUS/Organization/How to organize a File System.md",
+    "0 SPARK/How to make Checklists.md",
+    "2 GENIUS/Organization/The SAGE System.md",
+    "2 GENIUS/Obsidian tips.md",
+    "2 GENIUS/SWAT.md",
+    "textgenerator/prompts/local/Expand.md",
+    "textgenerator/prompts/local/rewrite.md",
+    "textgenerator/prompts/local/Rewrite and format.md",
+    "textgenerator/prompts/local/Summarize short.md",
+    "2 GENIUS/Organization/Productivity tips.md",
+    "2 GENIUS/Organization/Productivity tips (1).md",
+    "Templates/Travel/Water gear.md",
+    "2 GENIUS/Vim.md",
+    "textgenerator/prompts/trash/vision",
+    "textgenerator/prompts/trash/smartConnections",
+    "textgenerator/prompts/trash/Experimental",
+    "textgenerator/prompts/trash/default",
+    "textgenerator/prompts/trash/dalle",
+    "textgenerator/prompts/trash/awesomePrompts",
+    "textgenerator/prompts/trash",
+    "textgenerator/prompts/trash/huggingface",
+    "textgenerator/prompts/dalle",
+    "res/Pasted image 20240718201243.png",
+    "1 PROJECTS/Travel/res/Pasted image 20230908220638.png",
+    "1 PROJECTS/Travel/res/Pasted image 20230908220616.png",
+    "res/tip of plant.jpg",
+    "Untitled.canvas"
+  ]
+}

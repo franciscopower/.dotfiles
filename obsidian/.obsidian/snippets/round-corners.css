@@ -1,0 +1,7 @@
+body {
+    --radius-s: 10px;
+    --radius-m: 12px;
+    --radius-l: 14px;
+    --radius-xl: 18px;
+    --button-radius: 10px;
+}

@@ -1,0 +1,13 @@
+{
+  "vimMode": true,
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "folder",
+  "attachmentFolderPath": "res",
+  "showUnsupportedFiles": true,
+  "showFrontmatter": false,
+  "spellcheck": true,
+  "showLineNumber": false,
+  "newFileFolderPath": "0 SPARK",
+  "showRibbon": true
+}
