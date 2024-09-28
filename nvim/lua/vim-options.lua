@@ -15,9 +15,13 @@ end)
 
 -- CTRL+w to close pane
 vim.keymap.set("n", "<C-w>", function ()
-  vim.cmd("bdelete")
+  vim.cmd("q")
 end)
 
+-- close buffer
+vim.keymap.set("n", "<Leader>q", function ()
+  vim.cmd("bdelete")
+end)
 -- switch between buffers
 vim.keymap.set("n", "<Leader>h", function ()
   vim.cmd("bprevious")
