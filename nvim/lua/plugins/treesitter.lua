@@ -1,6 +1,6 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter", 
+    "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
       local configs = require("nvim-treesitter.configs")
@@ -9,7 +9,7 @@ return {
         sync_install = false,
         auto_install = true,
         highlight = { enable = true },
-        indent = { enable = true },  
+        indent = { enable = true },
       })
     end
   },
@@ -31,6 +31,8 @@ return {
         on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
       }
     end
+  },
+  {
+    "lewis6991/spaceless.nvim"
   }
-
 }

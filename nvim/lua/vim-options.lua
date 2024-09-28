@@ -6,39 +6,48 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set relativenumber")
+vim.cmd("set nohlsearch")
 
 -- CTRL+s to save
-vim.keymap.set("n", "<C-s>", ":w<CR>")
+vim.keymap.set("n", "<C-s>", function ()
+  vim.cmd("w")
+end)
 
 -- CTRL+w to close pane
-vim.keymap.set("n", "<C-w>", ":q<CR>")
+vim.keymap.set("n", "<C-w>", function ()
+  vim.cmd("bdelete")
+end)
+
+-- switch between buffers
+vim.keymap.set("n", "<Leader>h", function ()
+  vim.cmd("bprevious")
+end)
+vim.keymap.set("n", "<Leader>l", function ()
+  vim.cmd("bnext")
+end)
+
 -- Split panes
-vim.keymap.set("n", "<Leader>vs", ":vsplit<CR>")
+vim.keymap.set("n", "<Leader>vs", function ()
+  vim.cmd("vsplit")
+end)
 -- switch between panes
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 -- resize panes
-vim.keymap.set("n", "<C-S-Left>", ":vertical resize -5<CR>")
-vim.keymap.set("n", "<C-S-Right>", ":vertical resize +5<CR>")
-
--- swtich between tabs
-vim.keymap.set("n", "<leader>1", "1gt")
-vim.keymap.set("n", "<leader>2", "2gt")
-vim.keymap.set("n", "<leader>3", "3gt")
-vim.keymap.set("n", "<leader>4", "4gt")
-vim.keymap.set("n", "<leader>5", "5gt")
-vim.keymap.set("n", "<leader>6", "6gt")
-vim.keymap.set("n", "<leader>7", "7gt")
-vim.keymap.set("n", "<leader>8", "8gt")
-vim.keymap.set("n", "<leader>9", "9gt")
-
-vim.keymap.set("n", "<leader>h", function()
-  vim.cmd("tabprevious")
+vim.keymap.set("n", "<C-S-Left>", function ()
+  vim.cmd("vertical resize -5")
+end)
+vim.keymap.set("n", "<C-S-Right>", function ()
+  vim.cmd("vertical resize +5")
 end)
 
-vim.keymap.set("n", "<leader>l", function()
+-- swtich between tabs
+vim.keymap.set("n", "<leader>th", function()
+  vim.cmd("tabprevious")
+end)
+vim.keymap.set("n", "<leader>tl", function()
   vim.cmd("tabnext")
 end)
 
@@ -57,11 +66,13 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- yank into system clipboard
+vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- paste from system clipboard
-vim.keymap.set("i", "<C-v>", [["p+]])
+vim.keymap.set({"n", "v"}, "<C-v>", [["+p]])
+vim.keymap.set("i", "<C-v>", "<ESC>\"+pi")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
