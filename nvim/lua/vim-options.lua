@@ -8,30 +8,25 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set relativenumber")
 vim.cmd("set nohlsearch")
 
--- CTRL+s to save
-vim.keymap.set("n", "<C-s>", function ()
+-- CTRL+s to save in normal or input mode
+vim.keymap.set({"n", "i"}, "<C-s>", function()
   vim.cmd("w")
 end)
 
--- CTRL+w to close pane
-vim.keymap.set("n", "<C-w>", function ()
-  vim.cmd("q")
-end)
-
 -- close buffer
-vim.keymap.set("n", "<Leader>q", function ()
+vim.keymap.set("n", "<C-w>", function()
   vim.cmd("bdelete")
 end)
 -- switch between buffers
-vim.keymap.set("n", "<Leader>h", function ()
+vim.keymap.set("n", "<Leader>h", function()
   vim.cmd("bprevious")
 end)
-vim.keymap.set("n", "<Leader>l", function ()
+vim.keymap.set("n", "<Leader>l", function()
   vim.cmd("bnext")
 end)
 
 -- Split panes
-vim.keymap.set("n", "<Leader>vs", function ()
+vim.keymap.set("n", "<Leader>vs", function()
   vim.cmd("vsplit")
 end)
 -- switch between panes
@@ -39,11 +34,12 @@ vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
+
 -- resize panes
-vim.keymap.set("n", "<C-S-Left>", function ()
+vim.keymap.set("n", "<C-H>", function()
   vim.cmd("vertical resize -5")
 end)
-vim.keymap.set("n", "<C-S-Right>", function ()
+vim.keymap.set("n", "<C-L>", function()
   vim.cmd("vertical resize +5")
 end)
 
@@ -75,7 +71,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- paste from system clipboard
-vim.keymap.set({"n", "v"}, "<C-v>", [["+p]])
+vim.keymap.set({ "n", "v" }, "<C-v>", [["+p]])
 vim.keymap.set("i", "<C-v>", "<ESC>\"+pi")
 
 vim.keymap.set("n", "Q", "<nop>")
