@@ -36,10 +36,10 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- resize panes
-vim.keymap.set("n", "<C-H>", function()
+vim.keymap.set("n", "<C-S-Left>", function()
   vim.cmd("vertical resize -5")
 end)
-vim.keymap.set("n", "<C-L>", function()
+vim.keymap.set("n", "<C-S-Right>", function()
   vim.cmd("vertical resize +5")
 end)
 
@@ -49,6 +49,10 @@ vim.keymap.set("n", "<leader>th", function()
 end)
 vim.keymap.set("n", "<leader>tl", function()
   vim.cmd("tabnext")
+end)
+-- close tab
+vim.keymap.set("n", "<leader>tc", function()
+  vim.cmd("tabclose")
 end)
 
 -- move highlited lines together
