@@ -7,14 +7,19 @@ vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set relativenumber")
 vim.cmd("set nohlsearch")
+vim.cmd("set smartcase")
 
 -- CTRL+s to save in normal or input mode
 vim.keymap.set({"n", "i"}, "<C-s>", function()
   vim.cmd("w")
 end)
+-- CTRL+w to quit
+vim.keymap.set({"n"}, "<leader>wc", function()
+  vim.cmd("q")
+end)
 
 -- close buffer
-vim.keymap.set("n", "<C-w>", function()
+vim.keymap.set("n", "<leader>bc", function()
   vim.cmd("bdelete")
 end)
 -- switch between buffers
@@ -54,6 +59,10 @@ end)
 vim.keymap.set("n", "<leader>tc", function()
   vim.cmd("tabclose")
 end)
+-- new tab
+vim.keymap.set("n", "<leader>tn", function()
+  vim.cmd("tabnew")
+end)
 
 -- move highlited lines together
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -66,9 +75,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- do not copy when pasting over something
-vim.keymap.set("x", "<leader>p", [["_dP]])
-
 -- yank into system clipboard
 vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -79,4 +85,3 @@ vim.keymap.set({ "n", "v" }, "<C-v>", [["+p]])
 vim.keymap.set("i", "<C-v>", "<ESC>\"+pi")
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
