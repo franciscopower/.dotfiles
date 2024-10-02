@@ -9,6 +9,7 @@ return {
 
 				null_ls.builtins.formatting.prettier, --web
 				null_ls.builtins.diagnostics.eslint_d,
+				null_ls.builtins.diagnostics.djlint,
 
 				null_ls.builtins.formatting.black, --python
 				null_ls.builtins.formatting.isort,

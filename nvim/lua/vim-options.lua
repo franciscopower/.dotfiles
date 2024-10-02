@@ -84,4 +84,3 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<C-v>", [["+p]])
 vim.keymap.set("i", "<C-v>", "<ESC>\"+pi")
 
-vim.keymap.set("n", "Q", "<nop>")
