@@ -20,10 +20,11 @@ return {
   },
   config = function()
 
+    require("luasnip.loaders.from_vscode").lazy_load()
+
+    -- lsp configs
     local lsp = require("lsp-zero")
-
     lsp.preset("recommended")
-
     lsp.ensure_installed({
       "lua_ls",
       "eslint",
@@ -34,10 +35,10 @@ return {
       "cssls",
       "clangd"
     })
-
     -- Fix Undefined global 'vim'
     lsp.nvim_workspace()
 
+    -- cmp configs
     local cmp = require('cmp')
     local cmp_select = {behavior = cmp.SelectBehavior.Select}
     local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -46,9 +47,7 @@ return {
       ['<Tab>'] = cmp.mapping.confirm({ select = true }),
       ["<C-Space>"] = cmp.mapping.complete(),
     })
-
     cmp_mappings['<S-Tab>'] = nil
-
     lsp.setup_nvim_cmp({
       mapping = cmp_mappings
     })
@@ -63,6 +62,7 @@ return {
       }
     })
 
+    -- keybindings
     lsp.on_attach(function(client, bufnr)
       local opts = {buffer = bufnr, remap = false}
 
