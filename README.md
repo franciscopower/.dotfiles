@@ -21,10 +21,5 @@ After manually installing the dependencies, run:
 cp -r nvim $HOME\AppData\Local
 ```
 
-Then open a NVim session. Some errors will appear because the plugins are not installed yet.
-To install the pugins, run the following NVim command: `:PackerSync`.
-
-Close and reopen nvim and the errors should be gone. 
-
 The LSP provider used is `Mason`. To install support for a specific language, run `:Mason`
 
