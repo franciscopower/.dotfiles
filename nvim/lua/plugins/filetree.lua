@@ -10,6 +10,7 @@ return {
   config = function()
     vim.keymap.set("n", "<C-b>", function()
       vim.cmd("Neotree filesystem toggle left")
-    end)
+    end,
+      { desc = 'Toggle filesystem tree' })
   end
 }
