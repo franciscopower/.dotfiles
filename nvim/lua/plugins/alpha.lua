@@ -99,7 +99,7 @@ return
         dashboard.button('t', '  Find text', ':Telescope live_grep <CR>'),
         dashboard.button('r', '󰄉  Recent files', ':Telescope oldfiles <CR>'),
         dashboard.button('l', '󱐥  Lazy - Plugins', '<cmd>Lazy<CR>'),
-        dashboard.button('m', '󱐥  Mason - LSP', '<cmd>Mason<CR>'),
+        dashboard.button('m', '  Mason - LSP', '<cmd>Mason<CR>'),
         -- dashboard.button('c', '  Settings', ':e $HOME/.config/nvim/init.lua<CR>'),
         -- dashboard.button('p', '  Projects', ':e $HOME/Documents/github <CR>'),
         -- dashboard.button('d', '󱗼  Dotfiles', ':e $HOME/dotfiles <CR>'),

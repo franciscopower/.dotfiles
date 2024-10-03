@@ -17,8 +17,8 @@ vim.keymap.set({"n"}, "<leader>wc", function() vim.cmd("q") end, {desc = 'Window
 -- close buffer
 vim.keymap.set("n", "<leader>bc", function() vim.cmd("bdelete") end, {desc = 'Buffer close'})
 -- switch between buffers
-vim.keymap.set("n", "<Leader>h", function() vim.cmd("bprevious") end, {desc = 'Buffer previous'})
-vim.keymap.set("n", "<Leader>l", function() vim.cmd("bnext") end, {desc = 'Buffer next'})
+vim.keymap.set("n", "<Leader>bh", function() vim.cmd("bprevious") end, {desc = 'Buffer previous'})
+vim.keymap.set("n", "<Leader>bl", function() vim.cmd("bnext") end, {desc = 'Buffer next'})
 
 -- Split panes
 vim.keymap.set("n", "<Leader>vs", function() vim.cmd("vsplit") end, {desc = "Vertical split"})
@@ -57,4 +57,3 @@ vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]])
 -- paste from system clipboard
 vim.keymap.set({ "n", "v" }, "<C-v>", [["+p]])
 vim.keymap.set("i", "<C-v>", "<ESC>\"+pi")
-
