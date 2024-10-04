@@ -62,3 +62,8 @@ vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]])
 -- paste from system clipboard
 vim.keymap.set({ "n", "v" }, "<C-v>", [["+p]])
 vim.keymap.set("i", "<C-v>", "<ESC>\"+pi")
+
+-- Navigate to start and end of line
+vim.keymap.set("n", "H", "^")
+vim.keymap.set("n", "L", "$")
+
