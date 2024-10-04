@@ -29,8 +29,10 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", {desc = 'Switch to top pane'})
 vim.keymap.set("n", "<C-l>", "<C-w>l", {desc = 'Switch to right pane'})
 
 -- resize panes
-vim.keymap.set("n", "<C-S-Left>", function() vim.cmd("vertical resize -5") end, {desc = 'Resize pane smaller'})
-vim.keymap.set("n", "<C-S-Right>", function() vim.cmd("vertical resize +5") end, {desc = 'Resize pane larger'})
+vim.keymap.set("n", "<C-A-h>", function() vim.cmd("vertical resize -5") end, {desc = 'Resize pane larger'})
+vim.keymap.set("n", "<C-A-l>", function() vim.cmd("vertical resize +5") end, {desc = 'Resize pane larger'})
+vim.keymap.set("n", "<C-A-j>", function() vim.cmd("horizontal resize -5") end, {desc = 'Resize pane larger'})
+vim.keymap.set("n", "<C-A-k>", function() vim.cmd("horizontal resize +5") end, {desc = 'Resize pane larger'})
 
 -- swtich between tabs
 vim.keymap.set("n", "<leader>th", function() vim.cmd("tabprevious") end, {desc = 'Tab previous'})
