@@ -22,7 +22,7 @@ vim.keymap.set("n", "<Leader>bl", function() vim.cmd("bnext") end, {desc = 'Buff
 
 -- Split panes
 vim.keymap.set("n", "<Leader>vs", function() vim.cmd("vsplit") end, {desc = "Vertical split"})
--- switch between panes
+-- switch between pane
 vim.keymap.set("n", "<C-h>", "<C-w>h", {desc = 'Switch to left pane'})
 vim.keymap.set("n", "<C-j>", "<C-w>j", {desc = 'Switch to bottom pane'})
 vim.keymap.set("n", "<C-k>", "<C-w>k", {desc = 'Switch to top pane'})
@@ -50,6 +50,9 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+-- paste without yanking
+vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- yank into system clipboard
 vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]])
