@@ -5,21 +5,26 @@ return {
 
 		null_ls.setup({
 			sources = {
-				null_ls.builtins.formatting.stylua, --lua
+				null_ls.builtins.completion.spell,
 
-				null_ls.builtins.formatting.prettier, --web
+				--lua
+				null_ls.builtins.formatting.stylua,
+
+				--web
+				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.diagnostics.eslint_d,
 				null_ls.builtins.diagnostics.djlint,
 
-				null_ls.builtins.formatting.black, --python
+				--python
+				null_ls.builtins.formatting.black,
 				null_ls.builtins.formatting.isort,
 				null_ls.builtins.diagnostics.pylint,
 
-				-- null_ls.builtins.completion.spell,
-				-- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
+				-- cpp
+				null_ls.builtins.formatting.clang_format,
 			},
 		})
 
-		vim.keymap.set("n", "<leader>n", vim.lsp.buf.format, {desc = "Format buffer"})
+		vim.keymap.set("n", "<leader>n", vim.lsp.buf.format, { desc = "Format buffer" })
 	end,
 }

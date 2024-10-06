@@ -5,12 +5,7 @@ return {
 	dependencies = {
 		-- LSP
 		{ "neovim/nvim-lspconfig" },
-		{
-			"williamboman/mason.nvim",
-			run = function()
-				pcall(vim.cmd, "MasonUpdate")
-			end,
-		},
+		{ "williamboman/mason.nvim", },
 		{ "williamboman/mason-lspconfig.nvim" },
 		-- Autocompletion
 		{ "hrsh7th/nvim-cmp" },
@@ -31,16 +26,6 @@ return {
 		--- lsp configs ---
     -------------------
 		lsp.preset("recommended")
-		lsp.ensure_installed({
-			"lua_ls",
-			"eslint",
-			"ts_ls",
-			"angularls",
-			"pyright",
-			"html",
-			"cssls",
-			"clangd",
-		})
 
 		lsp.set_preferences({
 			suggest_lsp_servers = false,
