@@ -6,8 +6,11 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set relativenumber")
+vim.cmd("set number")
 vim.cmd("set nohlsearch")
 vim.cmd("set smartcase")
+vim.cmd("set splitright")
+
 
 -- CTRL+s to save in normal or input mode
 vim.keymap.set({"n", "i"}, "<C-s>", function() vim.cmd("w") end, {desc = 'Save buffer'})
