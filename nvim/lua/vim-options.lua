@@ -8,6 +8,7 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set relativenumber")
 vim.cmd("set number")
 vim.cmd("set nohlsearch")
+vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
 vim.cmd("set splitright")
 
