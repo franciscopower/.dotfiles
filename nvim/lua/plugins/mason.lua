@@ -5,6 +5,7 @@ return {
   end,
   opts = {
     ensure_installed = {
+      -- lsp servers
       "lua_ls",
       "eslint",
       "ts_ls",
@@ -13,6 +14,8 @@ return {
       "html",
       "cssls",
       "clangd",
+      -- DAP
+      "codelldb",
     },
   },
 }
