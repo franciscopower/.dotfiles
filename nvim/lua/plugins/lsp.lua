@@ -107,9 +107,7 @@ return {
     -- run setup function
     lsp.setup()
     vim.diagnostic.config({
-      underline = {
-        severity = { max = vim.diagnostic.severity.INFO },
-      },
+      underline = true,
       virtual_text = {
         severity = { min = vim.diagnostic.severity.WARN },
       },

@@ -6,9 +6,6 @@
     - [ ] lsp borders
     - [ ] lsp errors
     - [ ] filetree errors
-- [ ] Check out plugins
-    - [ ] [CopilotChat](https://github.com/CopilotC-Nvim/CopilotChat.nvim)
-
 
 # Check out configs
 

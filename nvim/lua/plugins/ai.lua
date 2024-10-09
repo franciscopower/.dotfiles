@@ -1,66 +1,59 @@
 return {
-  {
-    "github/copilot.vim",
-    config = function ()
-      vim.keymap.set('i', '<C-k>', 'copilot#Accept("\\<CR>")', {
-        expr = true,
-        replace_keycodes = false,
-        desc = "Coplilot accept"
-      })
-      vim.g.copilot_no_tab_map = true
-      -- vim.keymap.set('i', '<leader>cj', '<Plug>(copilot-accept-word)')
-      -- vim.keymap.set('i', '<leader>ch', '<Plug>(copilot-previous)')
-      -- vim.keymap.set('i', '<leader>cl', '<Plug>(copilot-next)')
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		config = function()
+			require("copilot").setup({
+				panel = {
+					enabled = false, -- default true
+				},
+				suggestion = {
+					enabled = true,
+					auto_trigger = true, -- default false
+					hide_during_completion = true,
+					debounce = 75,
+					keymap = {
+						accept = "<C-k>", -- default "<M-l>",
+						accept_word = false,
+						accept_line = "<C-l>", -- default false
+						next = "<M-]>",
+						prev = "<M-[>",
+						dismiss = "<C-]>",
+					},
+				},
+				filetypes = {
+					yaml = false,
+					markdown = false,
+					help = false,
+					gitcommit = true, -- default false
+					gitrebase = false,
+					hgcommit = false,
+					svn = false,
+					cvs = false,
+					["."] = false,
+				},
+			})
+		end,
+	},
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		dependencies = {
+			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+		},
+		config = function()
+			require("CopilotChat").setup()
 
-    end
-  }
-  -- {
-  --   "Exafunction/codeium.vim",
-  --   config = function()
-  --     -- Change '<C-g>' here to any keycode you like.
-  --     vim.keymap.set("i", "<C-g>", function()
-  --       return vim.fn["codeium#Accept"]()
-  --     end, { expr = true, silent = true })
-  --     vim.keymap.set("i", "<c-;>", function()
-  --       return vim.fn["codeium#CycleCompletions"](1)
-  --     end, { expr = true, silent = true })
-  --     vim.keymap.set("i", "<c-,>", function()
-  --       return vim.fn["codeium#CycleCompletions"](-1)
-  --     end, { expr = true, silent = true })
-  --     vim.keymap.set("i", "<c-x>", function()
-  --       return vim.fn["codeium#Clear"]()
-  --     end, { expr = true, silent = true })
-
-  --     vim.g.codeium_filetypes = {
-  --       markdown = false,
-  --     }
-  --   end,
-  -- }, -- Run `:Codeium Auth` after installing the plugin
-  -- {
-  --   "robitx/gp.nvim",
-  --   config = function()
-  --     local conf = {
-  --       -- For customization, refer to Install > Configuration in the Documentation/Readme
-  --     }
-  --     require("gp").setup(conf)
-
-  --     -- Setup shortcuts here (see Usage > Shortcuts in the Documentation/Readme)
-  --   end,
-  --   providers = {
-  --     openai = {
-  --       endpoint = "https://api.openai.com/v1/chat/completions",
-  --       secret = os.getenv("GPTERMINAL_LLM_API_KEY"),
-  --     },
-
-  --     -- googleai = {
-  --     -- 	endpoint = "https://generativelanguage.googleapis.com/v1beta/models/{{model}}:streamGenerateContent?key={{secret}}",
-  --     -- 	secret = os.getenv("GOOGLEAI_API_KEY"),
-  --     -- },
-
-  --     -- anthropic = {
-  --     -- 	endpoint = "https://api.anthropic.com/v1/messages",
-  --     -- 	secret = os.getenv("ANTHROPIC_API_KEY"),
-  --     -- },
-  --   },
-  -- },
+			vim.keymap.set("n", "<leader>ac", ":CopilotChat") -- Open the chat window
+			vim.keymap.set("n", "<leader>ai", ":CopilotChatToggle<CR>") -- Toggle the chat window
+			vim.keymap.set("v", "<leader>ae", ":CopilotChatExplain<CR>") -- Write an explanation for the active selection as paragraphs of text
+			vim.keymap.set("v", "<leader>ar", ":CopilotChatReview<CR>") -- Review the selected code
+			vim.keymap.set("v", "<leader>af", ":CopilotChatFix<CR>") -- There is a problem in this code. Rewrite the code to show it with the bug fixed
+			vim.keymap.set("v", "<leader>ao", ":CopilotChatOptimize<CR>") -- Optimize the selected code to improve performance and readability
+			vim.keymap.set("v", "<leader>ad", ":CopilotChatDocs<CR>") -- Please a-dd documentation comment for the selection
+			vim.keymap.set({"v", "n"}, "<leader>at", ":CopilotChatTests<CR>") -- Please generate tests for my code
+			-- vim.keymap.set("n", "<leader>a", ":CopilotChatFixDiagnostic<CR>") -- Please assist with the following diagnostic issue in file
+			vim.keymap.set("n", "<leader>ag", ":CopilotChatCommitStaged<CR>") -- Write commit message for the change with commitizen convention
+		end,
+	},
 }
