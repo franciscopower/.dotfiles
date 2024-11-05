@@ -13,7 +13,7 @@ return {
 		vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 		vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
-		vim.keymap.set("n", "<C-b>", function()
+		vim.keymap.set("n", "<leader>vt", function()
 			vim.cmd("Neotree filesystem toggle left")
 		end, { desc = "Toggle filesystem tree" })
 	end,
