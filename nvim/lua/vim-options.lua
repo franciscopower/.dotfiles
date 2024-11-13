@@ -1,50 +1,98 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
-vim.cmd("set relativenumber")
-vim.cmd("set number")
-vim.cmd("set nohlsearch")
-vim.cmd("set ignorecase")
-vim.cmd("set smartcase")
-vim.cmd("set splitright")
+-- general options
+vim.opt.nu = true
+vim.opt.relativenumber = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.wrap = true
+vim.opt.splitright = true
 
+-- Search
+vim.opt.hlsearch = false
+vim.o.incsearch = true  -- starts searching as soon as typing, without enter needed
+vim.o.ignorecase = true -- ignore letter case when searching
+vim.o.smartcase = true  -- case insentive unless capitals used in searcher
+
+local float = { focusable = true, style = "minimal", border = "rounded" }
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, float)
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, float)
+
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#d8bd92" })
+
+-- folds
+vim.o.foldcolumn = "1" -- '0' is not bad
+vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
+--- Keymaps
 
 -- CTRL+s to save in normal or input mode
-vim.keymap.set({"n", "i"}, "<C-s>", function() vim.cmd("w") end, {desc = 'Save buffer'})
+vim.keymap.set({ "n", "i" }, "<C-s>", function()
+  vim.cmd("w")
+end, { desc = "Save buffer" })
 -- CTRL+w to quit
-vim.keymap.set({"n"}, "<leader>wc", function() vim.cmd("q") end, {desc = 'Window close'})
+vim.keymap.set({ "n" }, "<leader>wc", function()
+  vim.cmd("q")
+end, { desc = "Window close" })
 
 -- close buffer
-vim.keymap.set("n", "<leader>bc", function() vim.cmd("bdelete") end, {desc = 'Buffer close'})
+vim.keymap.set("n", "<leader>bc", function()
+  vim.cmd("bdelete")
+end, { desc = "Buffer close" })
 -- switch between buffers
-vim.keymap.set("n", "<Leader>bh", function() vim.cmd("bprevious") end, {desc = 'Buffer previous'})
-vim.keymap.set("n", "<Leader>bl", function() vim.cmd("bnext") end, {desc = 'Buffer next'})
+vim.keymap.set("n", "<Leader>bh", function()
+  vim.cmd("bprevious")
+end, { desc = "Buffer previous" })
+vim.keymap.set("n", "<Leader>bl", function()
+  vim.cmd("bnext")
+end, { desc = "Buffer next" })
 
 -- Split panes
-vim.keymap.set("n", "<Leader>vs", function() vim.cmd("vsplit") end, {desc = "Vertical split"})
+vim.keymap.set("n", "<Leader>vs", function()
+  vim.cmd("vsplit")
+end, { desc = "Vertical split" })
 -- switch between pane
-vim.keymap.set("n", "<C-h>", "<C-w>h", {desc = 'Switch to left pane'})
-vim.keymap.set("n", "<C-j>", "<C-w>j", {desc = 'Switch to bottom pane'})
-vim.keymap.set("n", "<C-k>", "<C-w>k", {desc = 'Switch to top pane'})
-vim.keymap.set("n", "<C-l>", "<C-w>l", {desc = 'Switch to right pane'})
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Switch to left pane" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Switch to bottom pane" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Switch to top pane" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Switch to right pane" })
 
 -- resize panes
-vim.keymap.set("n", "<C-A-h>", function() vim.cmd("vertical resize -5") end, {desc = 'Resize pane larger'})
-vim.keymap.set("n", "<C-A-l>", function() vim.cmd("vertical resize +5") end, {desc = 'Resize pane larger'})
-vim.keymap.set("n", "<C-A-j>", function() vim.cmd("horizontal resize -5") end, {desc = 'Resize pane larger'})
-vim.keymap.set("n", "<C-A-k>", function() vim.cmd("horizontal resize +5") end, {desc = 'Resize pane larger'})
+vim.keymap.set("n", "<C-A-h>", function()
+  vim.cmd("vertical resize -5")
+end, { desc = "Resize pane larger" })
+vim.keymap.set("n", "<C-A-l>", function()
+  vim.cmd("vertical resize +5")
+end, { desc = "Resize pane larger" })
+vim.keymap.set("n", "<C-A-j>", function()
+  vim.cmd("horizontal resize -5")
+end, { desc = "Resize pane larger" })
+vim.keymap.set("n", "<C-A-k>", function()
+  vim.cmd("horizontal resize +5")
+end, { desc = "Resize pane larger" })
 
 -- swtich between tabs
-vim.keymap.set("n", "<leader>th", function() vim.cmd("tabprevious") end, {desc = 'Tab previous'})
-vim.keymap.set("n", "<leader>tl", function() vim.cmd("tabnext") end, {desc = 'Tab next'})
+vim.keymap.set("n", "<leader>th", function()
+  vim.cmd("tabprevious")
+end, { desc = "Tab previous" })
+vim.keymap.set("n", "<leader>tl", function()
+  vim.cmd("tabnext")
+end, { desc = "Tab next" })
 -- close tab
-vim.keymap.set("n", "<leader>tc", function() vim.cmd("tabclose") end, {desc = 'Tab close'})
+vim.keymap.set("n", "<leader>tc", function()
+  vim.cmd("tabclose")
+end, { desc = "Tab close" })
 -- new tab
-vim.keymap.set("n", "<leader>tn", function() vim.cmd("tabnew") end, {desc = 'Tab new'})
+vim.keymap.set("n", "<leader>tn", function()
+  vim.cmd("tabnew")
+end, { desc = "Tab new" })
 
 -- move highlited lines together
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -65,9 +113,8 @@ vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]])
 
 -- paste from system clipboard
 vim.keymap.set({ "n", "v" }, "<C-v>", [["+p]])
-vim.keymap.set("i", "<C-v>", "<ESC>\"+pi")
+vim.keymap.set("i", "<C-v>", '<ESC>"+pi')
 
 -- Navigate to start and end of line
 vim.keymap.set("n", "H", "^")
 vim.keymap.set("n", "L", "$")
-
