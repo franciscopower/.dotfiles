@@ -12,7 +12,7 @@ return {
 
 		vim.keymap.set(
 			"n",
-			"<leader>ct",
+			"<leader>vt",
 			"<cmd>TodoTrouble<cr>",
 			{ noremap = true, silent = true, desc = "Trouble List" }
 		)

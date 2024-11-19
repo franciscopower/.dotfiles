@@ -18,6 +18,11 @@ vim.o.incsearch = true  -- starts searching as soon as typing, without enter nee
 vim.o.ignorecase = true -- ignore letter case when searching
 vim.o.smartcase = true  -- case insentive unless capitals used in searcher
 
+-- Folds
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 99
+vim.opt.foldenable = false
+
 local float = { focusable = true, style = "minimal", border = "rounded" }
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, float)
@@ -25,11 +30,6 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#d8bd92" })
 
--- folds
-vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
 
 --- Keymaps
 
@@ -55,9 +55,12 @@ vim.keymap.set("n", "<Leader>bl", function()
 end, { desc = "Buffer next" })
 
 -- Split panes
-vim.keymap.set("n", "<Leader>vs", function()
+vim.keymap.set("n", "<Leader>wv", function()
   vim.cmd("vsplit")
 end, { desc = "Vertical split" })
+vim.keymap.set("n", "<Leader>wh", function()
+  vim.cmd("split")
+end, { desc = "Horizontal split" })
 -- switch between pane
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Switch to left pane" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Switch to bottom pane" })
