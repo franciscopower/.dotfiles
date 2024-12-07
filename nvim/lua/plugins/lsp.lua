@@ -12,6 +12,7 @@ return {
   config = function()
     -- for mason to play nice with LSP config
     require("mason-lspconfig").setup()
+    -- vscode snippets
     require("luasnip.loaders.from_vscode").lazy_load()
 
     local lspconfig = require("lspconfig")

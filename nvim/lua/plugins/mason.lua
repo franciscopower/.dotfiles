@@ -14,6 +14,15 @@ return {
       "html",
       "cssls",
       "clangd",
+      -- formatters
+      "stylua",
+      "prettier",
+      "black",
+      "isort",
+      "clang_format",
+      -- linting
+      "eslint_d",
+      "pylint",
       -- DAP
       "codelldb",
     },
