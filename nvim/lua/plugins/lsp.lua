@@ -17,6 +17,8 @@ return {
 
     local lspconfig = require("lspconfig")
 
+    vim.opt.signcolumn = 'yes'
+
     -- Add cmp_nvim_lsp capabilities settings to lspconfig
     -- This should be executed before you configure any language server
     local lspconfig_defaults = require("lspconfig").util.default_config
@@ -97,6 +99,9 @@ return {
         vim.keymap.set("n", "<leader>rn", function()
           vim.lsp.buf.rename()
         end, { buffer = bufnr, remap = false, desc = "Rename" })
+        vim.keymap.set("n", "<leader>vd", function()
+          vim.diagnostic.open_float()
+        end, { buffer = bufnr, remap = false, desc = "View diagnostics" })
       end,
     })
 
@@ -109,6 +114,5 @@ return {
         severity = { min = vim.diagnostic.severity.WARN },
       },
     })
-
   end,
 }
