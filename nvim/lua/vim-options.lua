@@ -122,3 +122,4 @@ vim.keymap.set("n", "L", "$")
 
 -- replace all occurences of the selected block
 vim.keymap.set("v", "<leader>s", "\"hy:%s/<C-r>h//g<left><left>", {desc = "substitute selected block"})
+vim.keymap.set("v", "<leader>/", "\"hy/<C-r>h", {desc = "search selected block"})
