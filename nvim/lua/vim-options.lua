@@ -11,6 +11,8 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.wrap = true
 vim.opt.splitright = true
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
 
 -- Search
 vim.opt.hlsearch = false
@@ -23,11 +25,7 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 vim.opt.foldenable = false
 
-local float = { focusable = true, style = "minimal", border = "rounded" }
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, float)
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, float)
-
+--
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#d8bd92" })
 
 
@@ -121,3 +119,6 @@ vim.keymap.set("i", "<C-v>", '<ESC>"+pi')
 -- Navigate to start and end of line
 vim.keymap.set("n", "H", "^")
 vim.keymap.set("n", "L", "$")
+
+-- replace all occurences of the selected block
+vim.keymap.set("v", "<leader>s", "\"hy:%s/<C-r>h//g<left><left>", {desc = "substitute selected block"})

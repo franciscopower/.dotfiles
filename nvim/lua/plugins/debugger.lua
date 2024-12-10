@@ -8,8 +8,8 @@ return {
 			local dap = require("dap")
 
 			-- keymaps
-			vim.keymap.set("n", "<Leader>dt", dap.toggle_breakpoint, {})
-			vim.keymap.set("n", "<Leader>dc", dap.continue, {})
+			vim.keymap.set("n", "<Leader>dt", dap.toggle_breakpoint, {desc="Debugger: toggle breakpoint"})
+			vim.keymap.set("n", "<Leader>dc", dap.continue, {desc="Debugger: run/continue"})
 
 			------------------------------
 			-- Debugging configurations --
