@@ -41,6 +41,7 @@ return {
 			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
 			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
 		},
+    branch = "main",
 		config = function()
 			require("CopilotChat").setup()
 

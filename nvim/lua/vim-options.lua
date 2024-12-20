@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- general options
+vim.opt.swapfile = false -- disable swap files
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 2
