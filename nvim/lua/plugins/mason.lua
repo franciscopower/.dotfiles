@@ -14,6 +14,7 @@ return {
       "html",
       "cssls",
       "clangd",
+      "svelte",
       -- formatters
       "stylua",
       "prettier",
