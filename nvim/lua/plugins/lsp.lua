@@ -39,6 +39,7 @@ return {
     lspconfig.html.setup({})
     lspconfig.cssls.setup({})
     lspconfig.clangd.setup({})
+    lspconfig.svelte.setup({})
 
     ----------------------
     -- setup completion --
