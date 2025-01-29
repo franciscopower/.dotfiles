@@ -1,16 +1,15 @@
 #Imports
 Import-Module -Name Terminal-Icons
 Import-Module -Name posh-git
-Import-Module -Name BurntToast
 Import-Module -Name PSFzf # requires `winget install fzf`
 
 #general aliases
 Set-Alias -Name v -Value nvim
+Set-Alias -Name kc -Value kubectl
 Set-Alias -Name lg -Value lazygit
 Set-Alias -Name ai -Value GPTerminal.exe
 Set-Alias -Name xp -Value explorer
 #general functions
-function saydone {New-BurntToastNotification -Text "The task is done!"}
 function cpath {(Get-Location).Path | Set-Clipboard}
 #navigation helpers
 function dev {cd C:\dev}
@@ -19,18 +18,29 @@ function c {cd C:\}
 function .. {cd ..}
 function ... {cd ../..}
 function nvimconfig { cd $home\AppData\Local\nvim }
+function weather($a) {
+    $url = "http://wttr.in/$a"
+    (Invoke-WebRequest $url).content
+}
 
 Set-PSReadlineOption -EditMode vi
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Chord "Ctrl+k" -Function AcceptSuggestion
 Set-PSReadLineOption -PredictionSource History 
-# Set-PSReadLineOption -PredictionViewStyle ListView 
+# Set-PSReadLineOption -PredictionViewStyle ListView
 
 #PSFzf
 $env:FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
-function gcf { git checkout $(git branch | ForEach-Object { $_ -replace "^  ", "" } | Invoke-Fzf) }
 Set-Alias -Name cdf -Value Invoke-FuzzySetLocation
+
+#git
+function gfb {
+  git checkout $(git branch | ForEach-Object { $_ -replace "^  ", "" } | Invoke-Fzf)
+}
+function gpb {
+   git branch --merged | % { $_.trim() } | ? { $_ -ne "*" -and $_ -notmatch "master" } | % { git branch -d $_ }
+}
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
@@ -38,13 +48,12 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
-#Zoxide
-Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) }) # zoxide - a better CD
-
 #Oh-My-Posh
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/robbyrussell.omp.json" | Invoke-Expression
 # more themes here: https://ohmyposh.dev/docs/themes
 
+#Zoxide
+Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) }) # zoxide - a better CD
 ##------------------------------------------------------------------------------
 # # PROMPT
 # function Write-BranchName () {
