@@ -96,10 +96,6 @@ vim.keymap.set("n", "<leader>tn", function()
   vim.cmd("tabnew")
 end, { desc = "Tab new" })
 
--- move highlited lines together
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
 -- keep cursor in the middle with certain moves
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
