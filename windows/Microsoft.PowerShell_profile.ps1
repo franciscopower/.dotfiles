@@ -3,6 +3,18 @@ Import-Module -Name Terminal-Icons
 Import-Module -Name posh-git
 Import-Module -Name PSFzf # requires `winget install fzf`
 
+#Constants
+$VaultPath = "C:\Users\pof1av\OneDrive - Bosch Group\VAULT"
+$ObsidianPath = "C:\Users\pof1av\OneDrive - Bosch Group\Notes"
+$DevPath = "C:\dev"
+#Load constants from profile.local.ps1
+$LocalProfilePath = "$PSScriptRoot\profile.local.ps1"
+if (Test-Path $LocalProfilePath) {
+    . $LocalProfilePath
+} else {
+    Write-Host "No local profile found, using defaults."
+}
+
 #general aliases
 Set-Alias -Name v -Value nvim
 Set-Alias -Name kc -Value kubectl
@@ -12,8 +24,8 @@ Set-Alias -Name xp -Value explorer
 #general functions
 function cpath {(Get-Location).Path | Set-Clipboard}
 #navigation helpers
-function dev {cd C:\dev}
-function vault {cd "C:\Users\pof1av\OneDrive - Bosch Group\VAULT"}
+function dev {cd $DevPath}
+function vault {cd $VaultPath}
 function c {cd C:\}
 function .. {cd ..}
 function ... {cd ../..}
@@ -22,6 +34,34 @@ function weather($a) {
     $url = "http://wttr.in/$a"
     (Invoke-WebRequest $url).content
 }
+function New-MarkdownNote {
+    param (
+        [string]$FileName = "New Note",
+        [string]$FolderPath = "$ObsidianPath\0 SPARK"
+    )
+
+    # Ensure the folder exists
+    if (!(Test-Path -Path $FolderPath)) {
+        New-Item -ItemType Directory -Path $FolderPath | Out-Null
+    }
+
+    $BaseName = [System.IO.Path]::GetFileNameWithoutExtension($FileName)
+    $Extension = ".md"
+    $FullPath = Join-Path -Path $FolderPath -ChildPath ($BaseName + $Extension)
+
+    $Index = 1
+    while (Test-Path -Path $FullPath) {
+        $FullPath = Join-Path -Path $FolderPath -ChildPath ("$BaseName-$Index$Extension")
+        $Index++
+    }
+
+    # Create the new file
+    New-Item -ItemType File -Path $FullPath | Out-Null
+
+    # Open in Neovim
+    nvim $FullPath
+}
+Set-Alias -Name nn -Value New-MarkdownNote
 
 Set-PSReadlineOption -EditMode vi
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
