@@ -14,6 +14,7 @@ vim.opt.wrap = true
 vim.opt.splitright = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
+vim.opt.shadafile = "NONE"
 
 -- Search
 vim.opt.hlsearch = false
