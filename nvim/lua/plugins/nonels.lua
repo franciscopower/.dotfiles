@@ -11,8 +11,6 @@ return {
 
 				--web
 				null_ls.builtins.formatting.prettier,
-				null_ls.builtins.diagnostics.eslint_d,
-				null_ls.builtins.diagnostics.djlint,
 
 				--python
 				null_ls.builtins.formatting.black,
@@ -21,6 +19,9 @@ return {
 
 				-- cpp
 				null_ls.builtins.formatting.clang_format,
+
+        -- xml
+        null_ls.builtins.formatting.xmlformatter,
 			},
 		})
 

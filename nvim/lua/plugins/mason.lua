@@ -21,8 +21,8 @@ return {
       "black",
       "isort",
       "clang_format",
+      "xmlformatter",
       -- linting
-      "eslint_d",
       "pylint",
       -- DAP
       "codelldb",
