@@ -61,11 +61,27 @@ fi
 if [ -f $DOT/local_configs.sh ]; then
 	source "$DOT/local_configs.sh"
 fi
-if [ -f $BASH/bash_prompt.sh ]; then
-	source "$BASH/bash_prompt.sh"
-else
-	PS1="\u in \W > "
-fi
 if [ -f $BASH/bash_functions.sh ]; then
 	source "$BASH/bash_functions.sh"
 fi
+
+
+######### PROMPT ##########
+# Colors
+RESET="\[\017\]"
+NORMAL="\[\033[00m\]"
+RED="\[\033[0;31m\]"
+RED_BOLD="\[\033[01;31m\]"
+YELLOW="\[\033[0;33m\]"
+GREEN="\[\033[0;32m\]"
+CYAN="\[\033[0;36m\]"
+CYAN_BOLD="\[\033[01;36m\]"
+WHITE="\[\033[0;37m\]"
+
+OK=""
+NOK=" ${RED}$(echo -e "\u2718")${NORMAL}"
+
+SELECT_RESULT="if [ \$? = 0 ]; then echo \"${OK}\"; else echo \"${NOK}\"; fi"
+
+# Throw it all together
+PS1="\n${RESET}${GREEN}-> ${NORMAL}${CYAN_BOLD}\W${NORMAL}${YELLOW}$(__git_ps1 " git:(%s)")${NORMAL}\`${SELECT_RESULT}\` "
