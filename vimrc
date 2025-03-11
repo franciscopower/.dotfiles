@@ -1,90 +1,96 @@
-" Don't try to be vi compatible
-set nocompatible
+" Set leader keys
+let g:mapleader = " "
+let g:maplocalleader = "\\"
 
-" Helps force plugins to load correctly when it is turned back on below
-filetype off
-
-" TODO: Load plugins here (pathogen or vundle)
-
-" Turn on syntax highlighting
-syntax on
-
-" For plugins to load correctly
-filetype plugin indent on
-
-" TODO: Pick a leader key
-" let mapleader = ","
-
-" Security
-set modelines=0
-
-" Show line numbers
+" General options
+set noswapfile
 set number
 set relativenumber
-
-" Show file stats
-set ruler
-
-" Don't use error bell
-set noerrorbells
-
-" Encoding
-set encoding=utf-8
-
-" Whitespace
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set smartindent
 set wrap
-set textwidth=79
-set formatoptions=tcqrn1
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-"set expandtab
-set noshiftround
-set autoindent
+set splitright
+set scrolloff=8
+set sidescrolloff=8
+set shadafile=NONE
 
-" Cursor motion
-set scrolloff=3
-set backspace=indent,eol,start
-set matchpairs+=<:> " use % to jump between pairs
-runtime! macros/matchit.vim
-
-" Allow hidden buffers
-set hidden
-
-" Rendering
-set ttyfast
-
-" Status bar
-set laststatus=2
-
-" Last line
-set showmode
-set showcmd
-
-" esc in insert & visual mode
-inoremap tf <esc>
-vnoremap tf <esc>
-
-" Searching
-nnoremap / /\v
-vnoremap / /\v
-set hlsearch
+" Search options
+set nohlsearch
 set incsearch
 set ignorecase
 set smartcase
-set showmatch
-map <leader><space> :let @/=''<cr> " clear search
 
-" Formatting
-map <leader>q gqip
+" Folds
+set foldmethod=indent
+set foldlevel=99
+set nofoldenable
 
-" Visualize tabs and newlines
-set listchars=tab:▸\ ,eol:¬
-" Uncomment this to enable by default:
-" set list " To enable by default
-" Or use your leader key + l to toggle on/off
-map <leader>l :set list!<CR> " Toggle tabs and EOL
+" Highlight FloatBorder
+highlight FloatBorder guifg=#d8bd92
 
-set mouse=a
+" Keymaps
+" CTRL+s to save in normal or input mode
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>a
 
-colorscheme pablo
+" CTRL+w to quit
+nnoremap <leader>wc :q<CR>
+
+" Close buffer
+nnoremap <leader>bc :bdelete<CR>
+
+" Switch between buffers
+nnoremap <leader>bh :bprevious<CR>
+nnoremap <leader>bl :bnext<CR>
+
+" Split panes
+nnoremap <leader>wv :vsplit<CR>
+nnoremap <leader>wh :split<CR>
+
+" Switch between panes
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Resize panes
+nnoremap <C-A-h> :vertical resize -5<CR>
+nnoremap <C-A-l> :vertical resize +5<CR>
+nnoremap <C-A-j> :resize -5<CR>
+nnoremap <C-A-k> :resize +5<CR>
+
+" Switch between tabs
+nnoremap <leader>th :tabprevious<CR>
+nnoremap <leader>tl :tabnext<CR>
+nnoremap <leader>tc :tabclose<CR>
+nnoremap <leader>tn :tabnew<CR>
+
+" Keep cursor in the middle with certain moves
+nnoremap J mzJ`z
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Paste without yanking
+xnoremap <leader>p "_dP
+
+" Yank into system clipboard
+nnoremap <C-c> "+y
+vnoremap <C-c> "+y
+
+" Paste from system clipboard
+nnoremap <C-v> "+p
+vnoremap <C-v> "+p
+inoremap <C-v> <Esc>"+pa
+
+" Navigate to start and end of line
+nnoremap H ^
+nnoremap L $
+
+" Replace all occurrences of the selected block
+vnoremap <leader>s "hy:%s/<C-r>h//g<left><left>
+vnoremap <leader>/ "hy/<C-r>h
