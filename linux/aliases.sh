@@ -1,17 +1,10 @@
-alias l='ls -la'
-alias v='nvim'
-
 alias ..='cd ..'
 alias ...='cd .. && cd ..'
-
-alias snv='sudo -E -s nvim' # use Neovim as sudo but preserve environment
-
-mmv () {
-  mkdir $1
-  cd $1
+set_v_alias() {
+    if command -v nvim &>/dev/null; then
+        alias v='nvim'
+    elif command -v vim &>/dev/null; then
+        alias v='vim'
+    fi
 }
-
-cdl () {
-  cd $1
-  ls
-}
+set_v_alias
