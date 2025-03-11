@@ -33,6 +33,8 @@ bind 'TAB:menu-complete'
 
 #Set vim keybindings
 set -o vi
+bind -m vi-command 'Control-l: clear-screen'
+bind -m vi-insert 'Control-l: clear-screen'
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -84,4 +86,4 @@ NOK=" ${RED}$(echo -e "\u2718")${NORMAL}"
 SELECT_RESULT="if [ \$? = 0 ]; then echo \"${OK}\"; else echo \"${NOK}\"; fi"
 
 # Throw it all together
-PS1="\n${RESET}${GREEN}-> ${NORMAL}${CYAN_BOLD}\W${NORMAL}${YELLOW}$(__git_ps1 " git:(%s)")${NORMAL}\`${SELECT_RESULT}\` "
+PS1="${RESET}${GREEN}-> ${NORMAL}${CYAN_BOLD}\W${NORMAL}${YELLOW}$(__git_ps1 " git:(%s)")${NORMAL}\`${SELECT_RESULT}\` "

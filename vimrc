@@ -94,3 +94,5 @@ nnoremap L $
 " Replace all occurrences of the selected block
 vnoremap <leader>s "hy:%s/<C-r>h//g<left><left>
 vnoremap <leader>/ "hy/<C-r>h
+
+colorscheme slate
