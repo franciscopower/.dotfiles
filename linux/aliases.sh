@@ -1,5 +1,6 @@
 alias ..='cd ..'
 alias ...='cd .. && cd ..'
+alias l='ls -la'
 set_v_alias() {
     if command -v nvim &>/dev/null; then
         alias v='nvim'

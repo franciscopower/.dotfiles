@@ -19,6 +19,7 @@ mv $folder/.bashrc $folder/.bashrc.bk
 mv /root/.bashrc /root/.bashrc.bk
 
 ln -s $PWD/bash/bashrc $folder/.bashrc
+ln -s $PWD/gitconfig $folder/.gitconfig
 ln -s $PWD/../vimrc $folder/.vimrc
 # add settings to superuser too
 ln -s $PWD /root/.dotfiles
