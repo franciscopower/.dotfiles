@@ -27,9 +27,12 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 vim.opt.foldenable = false
 
---
+-- Borders
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#d8bd92" })
 
+-- Terminal
+vim.o.shell = "powershell.exe"
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
 
 --- Keymaps
 
