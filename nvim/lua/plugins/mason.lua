@@ -19,8 +19,10 @@ return {
       "nginx_language_server",
       "docker_compose_language_service",
       "dockerls",
+      "gopls",
       -- formatters
       "stylua",
+      "gofumpt",
       "prettier",
       "black",
       "isort",
@@ -28,7 +30,10 @@ return {
       "xmlformatter",
       -- linting
       "pylint",
+      "staticcheck",
       -- DAP
+      "codelldb",
+      "delve",
       "codelldb",
     },
   },

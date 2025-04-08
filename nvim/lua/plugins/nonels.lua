@@ -22,6 +22,10 @@ return {
 
         -- xml
         null_ls.builtins.formatting.xmlformatter,
+
+        -- go
+        null_ls.builtins.formatting.gofumpt,
+				null_ls.builtins.diagnostics.staticcheck,
 			},
 		})
 
