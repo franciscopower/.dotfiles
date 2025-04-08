@@ -34,7 +34,7 @@ return {
       -- DAP
       "codelldb",
       "delve",
-      "codelldb",
+      "debugpy"
     },
   },
 }

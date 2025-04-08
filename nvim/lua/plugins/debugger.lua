@@ -63,7 +63,8 @@ return {
       require("mason-nvim-dap").setup({
         automatic_installation = true,
         ensure_installed = {
-          "delve"
+          "delve",
+          "python"
         },
         handlers = {},
       })
