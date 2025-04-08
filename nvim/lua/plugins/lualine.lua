@@ -35,6 +35,7 @@ return {
 				theme = bubbles_theme,
 				component_separators = "",
 				section_separators = { left = "", right = "" },
+        disabled_filetypes = {'neo-tree', 'Avante', 'AvanteInput', 'AvanteSelectedFiles'}
 			},
 			sections = {
 				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
