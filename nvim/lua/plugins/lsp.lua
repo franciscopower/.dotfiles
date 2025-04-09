@@ -44,7 +44,16 @@ return {
     lspconfig.powershell_es.setup({})
     lspconfig.docker_compose_language_service.setup({})
     lspconfig.dockerls.setup({})
-    lspconfig.gopls.setup({})
+    lspconfig.gopls.setup({
+      settings = {
+        gopls = {
+          completeUnimported = true,
+          analyses = {
+            unusedparams = true
+          }
+        }
+      }
+    })
 
     ----------------------
     -- setup completion --

@@ -1,4 +1,38 @@
 return {
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    opts = {
+      panel = {
+        enabled = false, -- default true
+      },
+      suggestion = {
+        enabled = true,
+        auto_trigger = true, -- default false
+        hide_during_completion = true,
+        debounce = 75,
+        keymap = {
+          accept = "<C-k>", -- default "<M-l>",
+          accept_word = false,
+          accept_line = false,
+          next = "<M-]>",
+          prev = "<M-[>",
+          dismiss = "<C-]>",
+        },
+      },
+      filetypes = {
+        yaml = false,
+        markdown = false,
+        help = false,
+        gitcommit = true, -- default false
+        gitrebase = false,
+        hgcommit = false,
+        svn = false,
+        cvs = false,
+        ["."] = false,
+      },
+    },
+  },
 	{
 		"yetone/avante.nvim",
 		event = "VeryLazy",
@@ -9,16 +43,10 @@ return {
 			provider = "copilot",
 			auto_suggestions_provider = "copilot",
 			behaviour = {
-				auto_suggestions = true,
 				support_paste_from_clipboard = true,
         enable_token_counting = false,
 			},
 			hints = { enabled = false },
-			mappings = {
-				suggestion = {
-					accept = "<C-k>",
-				},
-			},
 		},
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",

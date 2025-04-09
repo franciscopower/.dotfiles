@@ -1,4 +1,5 @@
 return {
+    -- Neogen is a plugin for generating annotations and documentation for code
     "danymat/neogen",
     dependencies = {
         "nvim-treesitter/nvim-treesitter",

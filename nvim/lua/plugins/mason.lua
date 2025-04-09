@@ -23,6 +23,8 @@ return {
       -- formatters
       "stylua",
       "gofumpt",
+      "goimports",
+      "golines",
       "prettier",
       "black",
       "isort",
