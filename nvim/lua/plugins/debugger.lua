@@ -23,7 +23,7 @@ return {
       require("dap-go").setup({
         delve = {
           detached = false,
-        }
+        },
       })
     end,
   },
@@ -64,9 +64,27 @@ return {
         automatic_installation = true,
         ensure_installed = {
           "delve",
-          "python"
+          "python",
         },
-        handlers = {},
+        handlers = {
+          function(config)
+            -- all sources with no handler get passed here
+
+            -- Keep original functionality
+            require("mason-nvim-dap").default_setup(config)
+          end,
+          python = function(config)
+            config.adapters = {
+              type = "executable",
+              command = "python",
+              args = {
+                "-m",
+                "debugpy.adapter",
+              },
+            }
+            require("mason-nvim-dap").default_setup(config) -- don't forget this!
+          end,
+        },
       })
     end,
   },
