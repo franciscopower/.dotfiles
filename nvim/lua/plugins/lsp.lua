@@ -40,6 +40,7 @@ return {
     lspconfig.cssls.setup({})
     lspconfig.clangd.setup({})
     lspconfig.svelte.setup({})
+    lspconfig.tailwindcss.setup({})
 
     ----------------------
     -- setup completion --

@@ -15,6 +15,7 @@ return {
       "cssls",
       "clangd",
       "svelte",
+      "tailwindcss",
       -- formatters
       "stylua",
       "prettier",
