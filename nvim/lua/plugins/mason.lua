@@ -35,7 +35,7 @@ return {
       "staticcheck",
       -- DAP
       "codelldb",
-      "delve",
+      "delve", -- Golang
       "debugpy"
     },
   },

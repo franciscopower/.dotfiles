@@ -44,6 +44,7 @@ return {
     lspconfig.powershell_es.setup({})
     lspconfig.docker_compose_language_service.setup({})
     lspconfig.dockerls.setup({})
+    lspconfig.tinymist.setup({})
     lspconfig.gopls.setup({
       settings = {
         gopls = {
@@ -93,39 +94,26 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       desc = "LSP actions",
       callback = function(event)
-        vim.keymap.set("n", "gd", function()
-          vim.lsp.buf.definition()
-        end, { buffer = bufnr, remap = false, desc = "Goto definition" })
-        vim.keymap.set("n", "gD", function()
-          vim.lsp.buf.declaration()
-        end, { buffer = bufnr, remap = false, desc = "Goto declaration" })
-        vim.keymap.set("n", "K", function()
-          vim.lsp.buf.hover()
-        end, { buffer = bufnr, remap = false, desc = "Show hover definition" })
-        vim.keymap.set("n", "gri", function()
-          vim.lsp.buf.implementation()
-        end, { buffer = bufnr, remap = false, desc = "Goto implementation" })
-        vim.keymap.set("n", "ge", function()
-          vim.diagnostic.goto_next()
-        end, { buffer = bufnr, remap = false, desc = "Goto next error" })
-        vim.keymap.set("n", "gE", function()
-          vim.diagnostic.goto_prev()
-        end, { buffer = bufnr, remap = false, desc = "Goto prev error" })
-        vim.keymap.set("n", "gh", function()
-          vim.diagnostic.signature_help()
-        end, { buffer = bufnr, remap = false, desc = "Signature help" })
-        vim.keymap.set("n", "gra", function()
-          vim.lsp.buf.code_action()
-        end, { buffer = bufnr, remap = false, desc = "Code actions" })
-        vim.keymap.set("n", "grn", function()
-          vim.lsp.buf.rename()
-        end, { buffer = bufnr, remap = false, desc = "Rename" })
-        vim.keymap.set("n", "grr", function()
-          vim.lsp.buf.references()
-        end, { buffer = bufnr, remap = false, desc = "References" })
-        vim.keymap.set("n", "<leader>vd", function()
-          vim.diagnostic.open_float()
-        end, { buffer = bufnr, remap = false, desc = "View diagnostics" })
+        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { buffer = bufnr, remap = false, desc = "Goto definition" })
+        vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, { buffer = bufnr, remap = false, desc = "Goto declaration" })
+        vim.keymap.set("n", "ge", function() vim.diagnostic.goto_next() end, { buffer = bufnr, remap = false, desc = "Goto next error" })
+        vim.keymap.set("n", "gE", function() vim.diagnostic.goto_prev() end, { buffer = bufnr, remap = false, desc = "Goto prev error" })
+        vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, { buffer = bufnr, remap = false, desc = "View diagnostics" })
+
+        -- Keymap to copy current diagnostics to the system clipboard
+        vim.keymap.set("n", "<leader>cd", function()
+          local current_word = vim.fn.expand("<cword>") -- Get the word under the cursor
+          local diagnostics = vim.diagnostic.get(0) -- Get diagnostics for the current buffer
+          local diagnostic_messages = {}
+          for _, diagnostic in ipairs(diagnostics) do
+            if string.find(diagnostic.message, current_word) then
+              table.insert(diagnostic_messages, diagnostic.message)
+            end
+          end
+          local diagnostic_text = table.concat(diagnostic_messages, "\n")
+          vim.fn.setreg("+", diagnostic_text) -- Copy to system clipboard
+          print("Diagnostics for '" .. current_word .. "' copied to clipboard")
+        end, { buffer = bufnr, remap = false, desc = "Copy diagnostics to clipboard" })
       end,
     })
 
