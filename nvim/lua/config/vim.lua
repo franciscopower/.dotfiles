@@ -14,6 +14,7 @@ vim.opt.wrap = true
 vim.opt.splitright = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
+vim.opt.shadafile = "NONE"
 
 -- Search
 vim.opt.hlsearch = false
@@ -26,9 +27,12 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 vim.opt.foldenable = false
 
---
+-- Borders
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#d8bd92" })
 
+-- Terminal
+vim.o.shell = "powershell.exe"
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
 
 --- Keymaps
 
@@ -111,7 +115,7 @@ vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]])
 
 -- paste from system clipboard
 vim.keymap.set({ "n", "v" }, "<C-v>", [["+p]])
-vim.keymap.set("i", "<C-v>", '<ESC>"+pi')
+vim.keymap.set("i", "<C-v>", '<ESC>"+pa')
 
 -- Navigate to start and end of line
 vim.keymap.set("n", "H", "^")
@@ -120,3 +124,13 @@ vim.keymap.set("n", "L", "$")
 -- replace all occurences of the selected block
 vim.keymap.set("v", "<leader>s", "\"hy:%s/<C-r>h//g<left><left>", {desc = "substitute selected block"})
 vim.keymap.set("v", "<leader>/", "\"hy/<C-r>h", {desc = "search selected block"})
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = vim.api.nvim_create_augroup('highlight_yank', {}),
+  desc = 'Hightlight selection on yank',
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 200 }
+  end,
+})

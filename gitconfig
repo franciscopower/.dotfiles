@@ -1,12 +1,40 @@
 [user]
-    email = 33499683+franciscopower@users.noreply.github.com
-    name = Francisco Power
+	name = EMEA\\POF1AV
+	email = francisco.power@pt.bosch.com
+[credential "http://rb-proxy-de.bosch.com:8080"]
+	provider = generic
+[credential]
+	useHttpPath = true
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+  sort = version:refname
+[init]
+  defaultBranch = main
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+[push]
+  default = simple
+  autoSetupRemote = true
+  followTags = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
 [alias]
-    st = status -sb
-    last = log -1 HEAD --stat
-    ll = !git log --pretty=format:\"%C(yellow)%h%Creset -%C(red)%d%Creset %s %C(green)(%cr) [%an]\"
-    cm = commit -m
-    tree = log --oneline --graph
-    br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
-    sm = switch master
-
+  st = status -sb
+  last = log -1 HEAD --stat
+  cm = commit -m
+  tree = log --oneline --graph
+  br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+  sm = switch main
+  ll = !git log --pretty=format:\"%C(yellow)%h%Creset -%C(red)%d%Creset %s %C(green)(%cr) [%an]\"
