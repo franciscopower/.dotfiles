@@ -30,12 +30,12 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 end
 config.launch_menu = launch_menu
 
+-- Appearance
 local DARKBLUE ="#01061A"
 local LIGHTBLUE ="#80a0ff"
 local WHITE ="#F8F8F2"
 local GRAY ="#808080"
 
--- Appearance
 config.colors = {
 	background = DARKBLUE,
   foreground = WHITE,
@@ -75,16 +75,13 @@ config.colors = {
 }
 
 config.color_scheme = 'Catppuccin Macchiato'
--- config.color_scheme = 'ChallengerDeep'
--- config.color_scheme = 'Floraverse'
--- config.color_scheme = 'MaterialOcean'
 config.font = wezterm.font("CaskaydiaCove Nerd Font")
 config.use_fancy_tab_bar = false
 config.enable_tab_bar = true
--- config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.win32_system_backdrop = "Acrylic"
--- config.window_background_opacity = 1
+config.window_background_opacity = 0.8
 
 -- Keymaps
 -- config.leader = { key = 'Space', mods = 'CTRL' }
