@@ -40,9 +40,7 @@ return {
     lspconfig.cssls.setup({})
     lspconfig.clangd.setup({})
     lspconfig.svelte.setup({})
-<<<<<<< HEAD
     lspconfig.tailwindcss.setup({})
-=======
     lspconfig.nginx_language_server.setup({})
     lspconfig.powershell_es.setup({})
     lspconfig.docker_compose_language_service.setup({})
@@ -58,7 +56,6 @@ return {
         }
       }
     })
->>>>>>> 4260e530e7eaf8665880dae20155f96932833614
 
     ----------------------
     -- setup completion --
