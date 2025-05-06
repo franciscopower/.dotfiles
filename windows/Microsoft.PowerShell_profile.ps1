@@ -4,8 +4,8 @@ Import-Module -Name posh-git
 Import-Module -Name PSFzf # requires `winget install fzf`
 
 #Constants
-$VaultPath = "C:\Users\pof1av\OneDrive - Bosch Group\VAULT"
-$ObsidianPath = "C:\Users\pof1av\OneDrive - Bosch Group\Notes"
+$VaultPath = "$HOME\VAULT"
+$ObsidianPath = "$HOME\Notes"
 $DevPath = "C:\dev"
 #Load constants from profile.local.ps1
 $LocalProfilePath = "$PSScriptRoot\profile.local.ps1"
@@ -17,6 +17,7 @@ if (Test-Path $LocalProfilePath) {
 
 #general aliases
 Set-Alias -Name v -Value nvim
+Set-Alias -Name cf -Value cf8
 Set-Alias -Name kc -Value kubectl
 Set-Alias -Name lg -Value lazygit
 Set-Alias -Name ai -Value GPTerminal.exe
@@ -30,6 +31,13 @@ function c {cd C:\}
 function .. {cd ..}
 function ... {cd ../..}
 function nvimconfig { cd $home\AppData\Local\nvim }
+#finding files
+function ff { ls -r | Invoke-Fzf }
+function fa($a) {
+  $ss = "*" + $a + "*"
+  ls -r | Where-Object {$_.Name -like $ss}
+}
+#other
 function weather($a) {
     $url = "http://wttr.in/$a"
     (Invoke-WebRequest $url).content
@@ -94,6 +102,7 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/robbyrussell.omp.json" | In
 
 #Zoxide
 Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) }) # zoxide - a better CD
+
 ##------------------------------------------------------------------------------
 # # PROMPT
 # function Write-BranchName () {
