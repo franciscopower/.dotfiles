@@ -11,31 +11,12 @@ return {
       orange = "#f24c4d",
 		}
 
-		local bubbles_theme = {
-			normal = {
-				a = { fg = colors.black, bg = colors.blue },
-				b = { fg = colors.white, bg = colors.darkblue },
-				c = { fg = colors.white },
-			},
-
-			insert = { a = { fg = colors.black, bg = colors.white } },
-			visual = { a = { fg = colors.black, bg = colors.cyan } },
-			replace = { a = { fg = colors.black, bg = colors.red } },
-			command = { a = { fg = colors.black, bg = colors.orange } },
-
-			inactive = {
-				a = { fg = colors.white, bg = colors.black },
-				b = { fg = colors.white, bg = colors.black },
-				c = { fg = colors.white },
-			},
-		}
-
 		require("lualine").setup({
 			options = {
-				theme = bubbles_theme,
 				component_separators = "",
 				section_separators = { left = "", right = "" },
-        disabled_filetypes = {'neo-tree', 'Avante', 'AvanteInput', 'AvanteSelectedFiles'}
+				tab_separators = { left = "", right = "" },
+        disabled_filetypes = {'neo-tree', 'Avante', 'AvanteInput', 'AvanteSelectedFiles'},
 			},
 			sections = {
 				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
