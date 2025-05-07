@@ -13,6 +13,7 @@ end)
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+
 -- Appearance
 config.default_prog = { "powershell.exe", "-nologo" }
 
@@ -61,6 +62,7 @@ config.window_background_opacity = 0.8
 -- config.leader = { key = 'Space', mods = 'CTRL' }
 config.leader = { key = "ç" }
 config.keys = {
+  { key = "v", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
 	{
 		mods = "LEADER",
 		key = "t",
