@@ -1,131 +1,39 @@
 return {
-  "neovim/nvim-lspconfig",
-  dependencies = {
-    -- Autocompletion
-    { "williamboman/mason-lspconfig.nvim" },
-    { "hrsh7th/nvim-cmp" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "L3MON4D3/LuaSnip" },
-    { "saadparwaiz1/cmp_luasnip" },
-    { "rafamadriz/friendly-snippets" },
-  },
-  config = function()
-    -- for mason to play nice with LSP config
-    require("mason-lspconfig").setup()
-    -- vscode snippets
-    require("luasnip.loaders.from_vscode").lazy_load()
+	{
+		"neovim/nvim-lspconfig",
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		dependencies = {
+			"mason-org/mason.nvim",
+			"neovim/nvim-lspconfig",
+		},
+		opts = {},
+	},
+	{
+		"saghen/blink.cmp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		version = "1.*",
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts_extend = { "sources.default" },
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
 
-    local lspconfig = require("lspconfig")
-
-    vim.opt.signcolumn = "yes"
-
-    -- Add cmp_nvim_lsp capabilities settings to lspconfig
-    -- This should be executed before you configure any language server
-    local lspconfig_defaults = lspconfig.util.default_config
-    lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-      "force",
-      lspconfig_defaults.capabilities,
-      require("cmp_nvim_lsp").default_capabilities()
-    )
-
-    --------------------
-    -- setup all LSPs --
-    --------------------
-    lspconfig.lua_ls.setup({})
-    lspconfig.eslint.setup({})
-    lspconfig.ts_ls.setup({})
-    lspconfig.angularls.setup({})
-    lspconfig.pyright.setup({})
-    lspconfig.html.setup({})
-    lspconfig.cssls.setup({})
-    lspconfig.clangd.setup({})
-    lspconfig.svelte.setup({})
-    lspconfig.tailwindcss.setup({})
-    lspconfig.nginx_language_server.setup({})
-    lspconfig.powershell_es.setup({})
-    lspconfig.docker_compose_language_service.setup({})
-    lspconfig.dockerls.setup({})
-    lspconfig.tinymist.setup({})
-    lspconfig.gopls.setup({
-      settings = {
-        gopls = {
-          completeUnimported = true,
-          analyses = {
-            unusedparams = true
-          }
-        }
-      }
-    })
-
-    ----------------------
-    -- setup completion --
-    ----------------------
-    local cmp = require("cmp")
-
-    cmp.setup({
-      snippet = {
-        -- REQUIRED - you must specify a snippet engine
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-          -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
-        end,
-      },
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" }, -- For luasnip users.
-      }, {
-        { name = "buffer" },
-      }),
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-      },
-      mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<TAB>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      }),
-    })
-
-    -----------------------
-    -- setup keybindings --
-    -----------------------
-    vim.api.nvim_create_autocmd("LspAttach", {
-      desc = "LSP actions",
-      callback = function(event)
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { buffer = bufnr, remap = false, desc = "Goto definition" })
-        vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, { buffer = bufnr, remap = false, desc = "Goto declaration" })
-        vim.keymap.set("n", "ge", function() vim.diagnostic.goto_next() end, { buffer = bufnr, remap = false, desc = "Goto next error" })
-        vim.keymap.set("n", "gE", function() vim.diagnostic.goto_prev() end, { buffer = bufnr, remap = false, desc = "Goto prev error" })
-        vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, { buffer = bufnr, remap = false, desc = "View diagnostics" })
-
-        -- Keymap to copy current diagnostics to the system clipboard
-        vim.keymap.set("n", "<leader>cd", function()
-          local current_word = vim.fn.expand("<cword>") -- Get the word under the cursor
-          local diagnostics = vim.diagnostic.get(0) -- Get diagnostics for the current buffer
-          local diagnostic_messages = {}
-          for _, diagnostic in ipairs(diagnostics) do
-            if string.find(diagnostic.message, current_word) then
-              table.insert(diagnostic_messages, diagnostic.message)
-            end
-          end
-          local diagnostic_text = table.concat(diagnostic_messages, "\n")
-          vim.fn.setreg("+", diagnostic_text) -- Copy to system clipboard
-          print("Diagnostics for '" .. current_word .. "' copied to clipboard")
-        end, { buffer = bufnr, remap = false, desc = "Copy diagnostics to clipboard" })
-      end,
-    })
-
-    --------------------------
-    -- other configurations --
-    --------------------------
-    vim.diagnostic.config({
-      underline = true,
-      virtual_text = {
-        severity = { min = vim.diagnostic.severity.WARN },
-      },
-    })
-  end,
+			require("blink.cmp").setup({
+				keymap = { preset = "super-tab" },
+				completion = {
+					documentation = {
+						auto_show = true,
+						auto_show_delay_ms = 500,
+						window = { border = "rounded" },
+					},
+					menu = {
+						border = "rounded",
+						winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
+					},
+				},
+			})
+		end,
+	},
 }

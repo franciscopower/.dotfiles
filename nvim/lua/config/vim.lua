@@ -122,15 +122,59 @@ vim.keymap.set("n", "H", "^")
 vim.keymap.set("n", "L", "$")
 
 -- replace all occurences of the selected block
-vim.keymap.set("v", "<leader>s", "\"hy:%s/<C-r>h//g<left><left>", {desc = "substitute selected block"})
-vim.keymap.set("v", "<leader>/", "\"hy/<C-r>h", {desc = "search selected block"})
+vim.keymap.set("v", "<leader>s", '"hy:%s/<C-r>h//g<left><left>', { desc = "substitute selected block" })
+vim.keymap.set("v", "<leader>/", '"hy/<C-r>h', { desc = "search selected block" })
 
 -- Highlight on yank
-vim.api.nvim_create_autocmd('TextYankPost', {
-  group = vim.api.nvim_create_augroup('highlight_yank', {}),
-  desc = 'Hightlight selection on yank',
-  pattern = '*',
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("highlight_yank", {}),
+  desc = "Hightlight selection on yank",
+  pattern = "*",
   callback = function()
-    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 200 }
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
   end,
 })
+
+-- builtin LSP config
+vim.lsp.config("*", {
+  capabilities = vim.lsp.protocol.make_client_capabilities(),
+})
+
+vim.opt.signcolumn = "yes"
+vim.diagnostic.config({
+  underline = true,
+  virtual_text = {
+    severity = { min = vim.diagnostic.severity.WARN },
+  },
+})
+
+vim.keymap.set("n", "gd", function()
+  vim.lsp.buf.definition()
+end, { buffer = bufnr, remap = false, desc = "Goto definition" })
+vim.keymap.set("n", "gD", function()
+  vim.lsp.buf.declaration()
+end, { buffer = bufnr, remap = false, desc = "Goto declaration" })
+vim.keymap.set("n", "ge", function()
+  vim.diagnostic.goto_next()
+end, { buffer = bufnr, remap = false, desc = "Goto next error" })
+vim.keymap.set("n", "gE", function()
+  vim.diagnostic.goto_prev()
+end, { buffer = bufnr, remap = false, desc = "Goto prev error" })
+vim.keymap.set("n", "<leader>vd", function()
+  vim.diagnostic.open_float()
+end, { buffer = bufnr, remap = false, desc = "View diagnostics" })
+
+-- Keymap to copy current diagnostics to the system clipboard
+vim.keymap.set("n", "<leader>cd", function()
+  local current_word = vim.fn.expand("<cword>") -- Get the word under the cursor
+  local diagnostics = vim.diagnostic.get(0)    -- Get diagnostics for the current buffer
+  local diagnostic_messages = {}
+  for _, diagnostic in ipairs(diagnostics) do
+    if string.find(diagnostic.message, current_word) then
+      table.insert(diagnostic_messages, diagnostic.message)
+    end
+  end
+  local diagnostic_text = table.concat(diagnostic_messages, "\n")
+  vim.fn.setreg("+", diagnostic_text) -- Copy to system clipboard
+  print("Diagnostics for '" .. current_word .. "' copied to clipboard")
+end, { buffer = bufnr, remap = false, desc = "Copy diagnostics to clipboard" })

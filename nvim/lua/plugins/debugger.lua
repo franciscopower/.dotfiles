@@ -55,7 +55,7 @@ return {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = {
       "mfussenegger/nvim-dap",
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       "nvim-neotest/nvim-nio",
     },
     config = function()
