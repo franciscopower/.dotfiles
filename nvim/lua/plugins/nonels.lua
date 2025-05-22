@@ -28,9 +28,6 @@ return {
         null_ls.builtins.formatting.goimports,
         null_ls.builtins.formatting.golines,
         null_ls.builtins.diagnostics.staticcheck,
-
-        --typst
-        null_ls.builtins.formatting.typstfmt,
       },
     })
 
