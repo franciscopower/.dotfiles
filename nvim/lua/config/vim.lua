@@ -117,13 +117,17 @@ vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]])
 vim.keymap.set({ "n", "v" }, "<C-v>", [["+p]])
 vim.keymap.set("i", "<C-v>", '<ESC>"+pa')
 
+-- duplicate and comment line
+vim.keymap.set("n", "<leader>cc", "yypgcck^", { desc="Duplicate and comment line", remap = true, silent = true })
+vim.keymap.set("v", "<leader>cc", "yPgvgc", { desc="Duplicate and comment selection", remap = true, silent = true })
+
 -- Navigate to start and end of line
 vim.keymap.set("n", "H", "^")
 vim.keymap.set("n", "L", "$")
 
 -- replace all occurences of the selected block
 vim.keymap.set("v", "<leader>s", '"hy:%s/<C-r>h//g<left><left>', { desc = "substitute selected block" })
-vim.keymap.set("v", "<leader>/", '"hy/<C-r>h', { desc = "search selected block" })
+vim.keymap.set("v", "/", '"hy/<C-r>h', { desc = "search selected block" })
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {

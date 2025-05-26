@@ -2,7 +2,7 @@
 local wezterm = require("wezterm")
 
 -- Plugins
-require("plugins")
+-- require("plugins")
 
 -- Custom Commands
 local commands = require("commands")
