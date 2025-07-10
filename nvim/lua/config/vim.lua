@@ -40,10 +40,20 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
 vim.keymap.set({ "n", "i" }, "<C-s>", function()
   vim.cmd("w")
 end, { desc = "Save buffer" })
--- CTRL+w to quit
+
+-- Close window
 vim.keymap.set({ "n" }, "<leader>wc", function()
   vim.cmd("q")
 end, { desc = "Window close" })
+
+-- Quickfix list
+vim.keymap.set("n", "<leader>qn", function()
+  vim.cmd("cnext")
+end, { desc = "Quickfix next" })
+vim.keymap.set("n", "<leader>qp", function()
+  vim.cmd("cprev")
+end, { desc = "Quickfix prev" })
+
 
 -- close buffer
 vim.keymap.set("n", "<leader>bc", function()
