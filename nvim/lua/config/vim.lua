@@ -53,6 +53,12 @@ end, { desc = "Quickfix next" })
 vim.keymap.set("n", "<leader>qp", function()
   vim.cmd("cprev")
 end, { desc = "Quickfix prev" })
+vim.keymap.set("n", "<leader>qo", function()
+  vim.cmd("copen")
+end, { desc = "Quickfix open" })
+vim.keymap.set("n", "<leader>qc", function()
+  vim.cmd("cclose")
+end, { desc = "Quickfix close" })
 
 
 -- close buffer
