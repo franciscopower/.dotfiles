@@ -12,9 +12,11 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.wrap = true
 vim.opt.splitright = true
+vim.opt.splitbelow = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.shadafile = "NONE"
+vim.opt.winborder = "rounded"
 
 -- Search
 vim.opt.hlsearch = false
