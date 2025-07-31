@@ -10,7 +10,7 @@ return
     },
     {
       "xiyaowong/transparent.nvim",
-      lazy = false, -- NOTE: NO NEED to Lazy load
+      lazy = false, -- NO NEED to Lazy load
       config = function()
         local transparent = require("transparent")
         transparent.setup({

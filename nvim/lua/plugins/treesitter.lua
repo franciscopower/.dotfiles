@@ -15,6 +15,7 @@ return {
 					"python",
 					"angular",
 					"markdown_inline",
+          "go"
 				},
 				sync_install = false,
 				auto_install = true,

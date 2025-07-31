@@ -4,14 +4,14 @@ return {
   cmd = "Trouble",
   keys = {
     {
-      "<leader>vt",
+      "<leader>ve",
       "<cmd>Trouble diagnostics toggle<cr>",
-      desc = "Diagnostics (Trouble)",
+      desc = "View Errors / Warnings / Info",
     },
     {
       "<leader>vl",
       "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-      desc = "LSP Definitions / references / ... (Trouble)",
+      desc = "View LSP Definitions / references / ... ",
     },
   },
 }

@@ -46,23 +46,5 @@ return {
         vim.cmd("Telescope git_branches")
       end, { silent = true, noremap = true, desc = "Find git branches" })
     end,
-  },
-  {
-    "kdheepak/lazygit.nvim",
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { "<leader>gl", "<cmd>LazyGit<cr>", desc = "Open LazyGit" },
-    },
-  },
+  }
 }

@@ -1,16 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	config = function()
-		local colors = {
-			blue = "#80a0ff",
-			darkblue = "#0d081b",
-			cyan = "#79dac8",
-			black = "#080808",
-			white = "#c6c6c6",
-			red = "#ff5189",
-      orange = "#f24c4d",
-		}
-
 		require("lualine").setup({
 			options = {
 				component_separators = "",
