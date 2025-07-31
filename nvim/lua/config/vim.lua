@@ -17,6 +17,14 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.shadafile = "NONE"
 
+vim.opt.signcolumn = "yes"
+vim.diagnostic.config({
+  underline = true,
+  virtual_text = {
+    severity = { min = vim.diagnostic.severity.WARN },
+  },
+})
+
 -- Search
 vim.opt.hlsearch = false
 vim.o.incsearch = true  -- starts searching as soon as typing, without enter needed
@@ -155,35 +163,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
   end,
 })
-
--- builtin LSP config
-vim.lsp.config("*", {
-  capabilities = vim.lsp.protocol.make_client_capabilities(),
-})
-
-vim.opt.signcolumn = "yes"
-vim.diagnostic.config({
-  underline = true,
-  virtual_text = {
-    severity = { min = vim.diagnostic.severity.WARN },
-  },
-})
-
-vim.keymap.set("n", "gd", function()
-  vim.lsp.buf.definition()
-end, { buffer = bufnr, remap = false, desc = "Goto definition" })
-vim.keymap.set("n", "gD", function()
-  vim.lsp.buf.declaration()
-end, { buffer = bufnr, remap = false, desc = "Goto declaration" })
-vim.keymap.set("n", "ge", function()
-  vim.diagnostic.goto_next()
-end, { buffer = bufnr, remap = false, desc = "Goto next error" })
-vim.keymap.set("n", "gE", function()
-  vim.diagnostic.goto_prev()
-end, { buffer = bufnr, remap = false, desc = "Goto prev error" })
-vim.keymap.set("n", "<leader>vd", function()
-  vim.diagnostic.open_float()
-end, { buffer = bufnr, remap = false, desc = "View diagnostics" })
 
 -- Keymap to copy current diagnostics to the system clipboard
 vim.keymap.set("n", "<leader>cd", function()

@@ -6,6 +6,6 @@ return {
     "shtml",
     "svg",
     "webmanifest",
-    "component.html"
+    "htmlangular",
   },
 }

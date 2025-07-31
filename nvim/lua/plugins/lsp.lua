@@ -1,39 +1,35 @@
 return {
-	{
-		"neovim/nvim-lspconfig",
-	},
-	{
-		"mason-org/mason-lspconfig.nvim",
-		dependencies = {
-			"mason-org/mason.nvim",
-			"neovim/nvim-lspconfig",
-		},
-		opts = {},
-	},
-	{
-		"saghen/blink.cmp",
-		dependencies = { "rafamadriz/friendly-snippets" },
-		version = "1.*",
-		---@module 'blink.cmp'
-		---@type blink.cmp.Config
-		opts_extend = { "sources.default" },
-		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load()
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      -- placing the builtin LSP config here for organization reasons.
+      vim.lsp.config("*", {
+        capabilities = vim.lsp.protocol.make_client_capabilities(),
+      })
 
-			require("blink.cmp").setup({
-				keymap = { preset = "super-tab" },
-				completion = {
-					documentation = {
-						auto_show = true,
-						auto_show_delay_ms = 500,
-						window = { border = "rounded" },
-					},
-					menu = {
-						border = "rounded",
-						winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
-					},
-				},
-			})
-		end,
-	},
+      vim.keymap.set("n", "gd", function()
+        vim.lsp.buf.definition()
+      end, { buffer = bufnr, remap = false, desc = "Goto definition" })
+      vim.keymap.set("n", "gD", function()
+        vim.lsp.buf.declaration()
+      end, { buffer = bufnr, remap = false, desc = "Goto declaration" })
+      vim.keymap.set("n", "ge", function()
+        vim.diagnostic.goto_next()
+      end, { buffer = bufnr, remap = false, desc = "Goto next error" })
+      vim.keymap.set("n", "gE", function()
+        vim.diagnostic.goto_prev()
+      end, { buffer = bufnr, remap = false, desc = "Goto prev error" })
+      vim.keymap.set("n", "<leader>vd", function()
+        vim.diagnostic.open_float()
+      end, { buffer = bufnr, remap = false, desc = "View diagnostics" })
+    end
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = {
+      "mason-org/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    opts = {},
+  },
 }
