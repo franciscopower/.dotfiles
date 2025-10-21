@@ -22,6 +22,10 @@ return {
       vim.keymap.set("n", "<leader>vd", function()
         vim.diagnostic.open_float()
       end, { buffer = bufnr, remap = false, desc = "View diagnostics" })
+
+      vim.keymap.set("n", "<leader>vh", function ()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      end, { buffer = bufnr, remap = false, desc = "Toggle inlay hints" })
     end
   },
   {
