@@ -11,6 +11,7 @@ return {
     html = { 'prettier' },
     css = { 'prettier' },
     htmlangular = { 'prettier' },
+    json = { 'prettier' },
   },
   config = function()
     vim.keymap.set("n", "<leader>nn", vim.lsp.buf.format, { desc = "Format buffer" })
