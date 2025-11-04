@@ -6,7 +6,7 @@ return {
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 				tab_separators = { left = "", right = "" },
-        disabled_filetypes = {'neo-tree', 'Avante', 'AvanteInput', 'AvanteSelectedFiles'},
+        disabled_filetypes = {'neo-tree', 'Avante', 'AvanteInput', 'AvanteTodos', 'AvanteSelectedFiles'},
 			},
 			sections = {
 				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },

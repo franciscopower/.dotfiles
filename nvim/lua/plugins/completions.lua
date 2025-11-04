@@ -2,8 +2,9 @@ return {
   {
     'saghen/blink.cmp',
     dependencies = {
-      -- { 'rafamadriz/friendly-snippets' },
-      { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+      { 'rafamadriz/friendly-snippets' },
+      { 'L3MON4D3/LuaSnip',            version = 'v2.*' },
+      { 'Kaiser-Yang/blink-cmp-avante' }
     },
     version = '1.*',
     ---@module 'blink.cmp'
@@ -35,7 +36,16 @@ return {
         },
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'avante' },
+        providers = {
+          avante = {
+            module = 'blink-cmp-avante',
+            name = 'Avante',
+            opts = {
+              -- options for blink-cmp-avante
+            }
+          }
+        },
       },
 
       fuzzy = { implementation = "prefer_rust_with_warning" }
@@ -48,7 +58,7 @@ return {
     dependencies = {
       { 'rafamadriz/friendly-snippets' },
     },
-    config = function ()
+    config = function()
       require('luasnip').filetype_extend("htmlangular", { "html" })
       require('luasnip.loaders.from_vscode').lazy_load()
     end
