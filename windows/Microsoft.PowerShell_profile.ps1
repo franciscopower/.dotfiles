@@ -1,7 +1,58 @@
 #Imports
-Import-Module -Name Terminal-Icons
-Import-Module -Name posh-git
-Import-Module -Name PSFzf # requires `winget install fzf`
+
+# --- LazyLoad-Module helper ---
+function LazyLoad-Module {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)] [string]$ModuleName,
+        [Parameter(Mandatory)] [string]$FunctionName,
+        [Parameter(Mandatory)] [ScriptBlock]$TriggerAction,
+        [Parameter(ValueFromRemainingArguments = $true)] $ArgsFromCaller
+    )
+
+    # Remove wrapper first (prevents recursion)
+    Remove-Item "Function:\$FunctionName" -ErrorAction SilentlyContinue
+
+    # Import the real module
+    Import-Module $ModuleName -ErrorAction SilentlyContinue
+
+    # Call the trigger with the user's arguments
+    & $TriggerAction @ArgsFromCaller
+}
+
+
+# --- Lazy-load Terminal-Icons on first use ---
+function Get-ChildItem {
+    param([Parameter(ValueFromRemainingArguments = $true)] $Args)
+    LazyLoad-Module -ModuleName Terminal-Icons -FunctionName Get-ChildItem -TriggerAction {
+        Microsoft.PowerShell.Management\Get-ChildItem @Args
+    } @Args
+}
+
+# --- Lazy-load posh-git on first git use ---
+function git {
+    param([Parameter(ValueFromRemainingArguments = $true)] $Args)
+    LazyLoad-Module -ModuleName posh-git -FunctionName git -TriggerAction {
+        & git @Args
+    } @Args
+}
+
+# --- Lazy-load PSFzf on first fzf use ---
+function fzf {
+    param([Parameter(ValueFromRemainingArguments = $true)] $Args)
+    LazyLoad-Module -ModuleName PSFzf -FunctionName fzf -TriggerAction {
+        & fzf @Args
+    } @Args
+}
+
+# Chocolatey profile
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+function choco {
+    param([Parameter(ValueFromRemainingArguments = $true)] $Args)
+    LazyLoad-Module -ModuleName $ChocolateyProfile -FunctionName choco -TriggerAction {
+        & choco @Args
+    } @Args
+}
 
 #Constants
 $VaultPath = "$HOME\VAULT"
@@ -74,7 +125,7 @@ Set-Alias -Name nn -Value New-MarkdownNote
 Set-PSReadlineOption -EditMode vi
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Chord "Ctrl+k" -Function AcceptSuggestion
-Set-PSReadLineOption -PredictionSource History 
+Set-PSReadLineOption -PredictionSource History
 # Set-PSReadLineOption -PredictionViewStyle ListView
 
 #PSFzf
@@ -90,11 +141,6 @@ function gpb {
    git branch --merged | % { $_.trim() } | ? { $_ -ne "*" -and $_ -notmatch "master" } | % { git branch -d $_ }
 }
 
-# Chocolatey profile
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
-}
 
 #Oh-My-Posh
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/robbyrussell.omp.json" | Invoke-Expression
