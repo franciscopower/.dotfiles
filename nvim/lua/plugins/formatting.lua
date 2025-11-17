@@ -13,6 +13,7 @@ return {
         css = { 'prettier' },
         htmlangular = { 'prettier' },
         json = { 'prettier' },
+        yaml = { 'prettier' },
       },
       formatters = {
         prettier = {
