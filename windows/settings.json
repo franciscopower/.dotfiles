@@ -1,0 +1,308 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": 
+    [
+        {
+            "command": 
+            {
+                "action": "resizePane",
+                "direction": "up"
+            },
+            "id": "User.resizePane.6CD791B"
+        },
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "id": "User.copy.644BA8F2"
+        },
+        {
+            "command": "paste",
+            "id": "User.paste"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.A6751878"
+        },
+        {
+            "command": "toggleFocusMode",
+            "id": "User.toggleFocusMode"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
+        },
+        {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "down"
+            },
+            "id": "User.moveFocus.F747588A"
+        },
+        {
+            "command": 
+            {
+                "action": "resizePane",
+                "direction": "left"
+            },
+            "id": "User.resizePane.2A0DA8E0"
+        },
+        {
+            "command": "toggleFullscreen",
+            "id": "User.toggleFullscreen"
+        },
+        {
+            "command": 
+            {
+                "action": "resizePane",
+                "direction": "down"
+            },
+            "id": "User.resizePane.F747588A"
+        },
+        {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "left"
+            },
+            "id": "User.moveFocus.2A0DA8E0"
+        },
+        {
+            "command": 
+            {
+                "action": "resizePane",
+                "direction": "right"
+            },
+            "id": "User.resizePane.87C324ED"
+        },
+        {
+            "command": "closePane",
+            "id": "User.closePane"
+        },
+        {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "right"
+            },
+            "id": "User.moveFocus.87C324ED"
+        },
+        {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "up"
+            },
+            "id": "User.moveFocus.6CD791B"
+        }
+    ],
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+    "keybindings": 
+    [
+        {
+            "id": null,
+            "keys": "alt+shift+up"
+        },
+        {
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+v"
+        },
+        {
+            "id": null,
+            "keys": "alt+shift+down"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+c"
+        },
+        {
+            "id": null,
+            "keys": "alt+shift+left"
+        },
+        {
+            "id": null,
+            "keys": "alt+shift+right"
+        },
+        {
+            "id": null,
+            "keys": "alt+down"
+        },
+        {
+            "id": null,
+            "keys": "alt+left"
+        },
+        {
+            "id": null,
+            "keys": "alt+right"
+        },
+        {
+            "id": "User.toggleFullscreen",
+            "keys": "alt+shift+f"
+        },
+        {
+            "id": null,
+            "keys": "alt+up"
+        },
+        {
+            "id": null,
+            "keys": "alt+o"
+        },
+        {
+            "id": null,
+            "keys": "alt+shift+o"
+        },
+        {
+            "id": null,
+            "keys": "alt+i"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+w"
+        },
+        {
+            "id": null,
+            "keys": "alt+shift+d"
+        },
+        {
+            "id": null,
+            "keys": "alt+enter"
+        },
+        {
+            "id": "User.resizePane.6CD791B",
+            "keys": "alt+shift+k"
+        },
+        {
+            "id": "User.resizePane.2A0DA8E0",
+            "keys": "alt+shift+h"
+        },
+        {
+            "id": "User.resizePane.F747588A",
+            "keys": "alt+shift+j"
+        },
+        {
+            "id": "User.splitPane.A6751878",
+            "keys": "alt+d"
+        },
+        {
+            "id": "User.resizePane.87C324ED",
+            "keys": "alt+shift+l"
+        },
+        {
+            "id": "User.moveFocus.87C324ED",
+            "keys": "alt+l"
+        },
+        {
+            "id": "User.closePane",
+            "keys": "alt+q"
+        },
+        {
+            "id": "User.moveFocus.F747588A",
+            "keys": "alt+j"
+        },
+        {
+            "id": "User.moveFocus.2A0DA8E0",
+            "keys": "alt+h"
+        },
+        {
+            "id": "User.moveFocus.6CD791B",
+            "keys": "alt+k"
+        },
+        {
+            "id": "User.toggleFocusMode",
+            "keys": "alt+f"
+        }
+    ],
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "background": "#22252E",
+            "backgroundImageOpacity": 0.55,
+            "colorScheme": "catppuccin-mocha",
+            "cursorShape": "filledBox",
+            "font": 
+            {
+                "face": "CaskaydiaCove Nerd Font",
+                "size": 11
+            },
+            "opacity": 75,
+            "useAcrylic": true
+        },
+        "list": 
+        [
+            {
+                "backgroundImage": null,
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -nologo",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Prompt de comando"
+            },
+            {
+                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "Windows.Terminal.Wsl"
+            }
+        ]
+    },
+    "schemes": 
+    [
+        {
+            "background": "#010101",
+            "black": "#45475A",
+            "blue": "#89B4FA",
+            "brightBlack": "#585B70",
+            "brightBlue": "#89B4FA",
+            "brightCyan": "#94E2D5",
+            "brightGreen": "#A6E3A1",
+            "brightPurple": "#F5C2E7",
+            "brightRed": "#F38BA8",
+            "brightWhite": "#A6ADC8",
+            "brightYellow": "#F9E2AF",
+            "cursorColor": "#F5E0DC",
+            "cyan": "#94E2D5",
+            "foreground": "#CDD6F4",
+            "green": "#A6E3A1",
+            "name": "catppuccin-mocha",
+            "purple": "#F5C2E7",
+            "red": "#F38BA8",
+            "selectionBackground": "#585B70",
+            "white": "#BAC2DE",
+            "yellow": "#F9E2AF"
+        }
+    ],
+    "searchWebDefaultQueryUrl": "https://www.perplexity.ai/?q=%s",
+    "showTabsFullscreen": true,
+    "showTabsInTitlebar": true,
+    "tabSwitcherMode": "mru",
+    "tabWidthMode": "equal",
+    "themes": [],
+    "useAcrylicInTabRow": true
+}
