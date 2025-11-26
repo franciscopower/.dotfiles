@@ -38,6 +38,7 @@ vim.opt.foldenable = false
 
 -- Borders
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#d8bd92" })
+vim.o.winborder = "rounded"
 
 -- Terminal
 vim.o.shell = "powershell.exe"

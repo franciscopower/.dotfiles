@@ -126,7 +126,6 @@ Set-PSReadlineOption -EditMode vi
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Chord "Ctrl+k" -Function AcceptSuggestion
 Set-PSReadLineOption -PredictionSource History
-# Set-PSReadLineOption -PredictionViewStyle ListView
 
 #PSFzf
 $env:FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
@@ -141,11 +140,7 @@ function gpb {
    git branch --merged | % { $_.trim() } | ? { $_ -ne "*" -and $_ -notmatch "master" } | % { git branch -d $_ }
 }
 
-
-#Oh-My-Posh
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/robbyrussell.omp.json" | Invoke-Expression
-# more themes here: https://ohmyposh.dev/docs/themes
+Invoke-Expression (&starship init powershell)
 
 #Zoxide
 Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) }) # zoxide - a better CD
-

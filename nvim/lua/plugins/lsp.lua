@@ -34,6 +34,14 @@ return {
       "mason-org/mason.nvim",
       "neovim/nvim-lspconfig",
     },
-    opts = {},
+    opts = {
+      ensure_installed = {
+        "ts_ls",
+        "angularls",
+        "svelte",
+        "gopls",
+        "pyright",
+      },
+    },
   },
 }
