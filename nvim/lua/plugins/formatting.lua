@@ -14,6 +14,7 @@ return {
         htmlangular = { 'prettier' },
         json = { 'prettier' },
         yaml = { 'prettier' },
+        svelte = { 'prettier' },
       },
       formatters = {
         prettier = {
