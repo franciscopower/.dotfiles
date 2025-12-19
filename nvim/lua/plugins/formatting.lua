@@ -11,10 +11,12 @@ return {
         go = { 'gofumpt', 'goimports', 'golines' },
         html = { 'prettier' },
         css = { 'prettier' },
+        scss = { 'prettier' },
         htmlangular = { 'prettier' },
         json = { 'prettier' },
         yaml = { 'prettier' },
         svelte = { 'prettier' },
+        markdwon = { 'prettier' },
       },
       formatters = {
         prettier = {

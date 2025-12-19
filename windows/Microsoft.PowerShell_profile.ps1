@@ -140,7 +140,8 @@ function gpb {
    git branch --merged | % { $_.trim() } | ? { $_ -ne "*" -and $_ -notmatch "master" } | % { git branch -d $_ }
 }
 
-Invoke-Expression (&starship init powershell)
+# Invoke-Expression (&starship init powershell)
+oh-my-posh init pwsh --config 'C:\dev\.dotfiles\oh-my-posh-themes\star_custom.omp.json' | Invoke-Expression
 
 #Zoxide
 Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) }) # zoxide - a better CD

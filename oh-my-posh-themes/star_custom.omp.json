@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "upgrade": {
+    "source": "cdn",
+    "interval": "168h",
+    "auto": false,
+    "notice": false
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "template": "root <#ffffff>in</> ",
+          "foreground": "#E06C75",
+          "type": "root",
+          "style": "plain"
+        },
+        {
+          "options": {
+            "style": "folder"
+          },
+          "template": "{{ .Path }} ",
+          "foreground": "#55B9C4",
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "options": {
+            "fetch_status": true
+          },
+          "template": "<#ffffff>on</> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
+          "foreground": "#C678DD",
+          "type": "git",
+          "style": "plain"
+        },
+        {
+          "options": {
+            "fetch_version": true
+          },
+          "template": "<#ffffff>via</> \ue781 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
+          "foreground": "#98C379",
+          "type": "node",
+          "style": "plain"
+        },
+        {
+          "template": "x ",
+          "foreground": "#C94A16",
+          "type": "status",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "template": "➜ ",
+          "foreground": "#63F08C",
+          "type": "text",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 4
+}

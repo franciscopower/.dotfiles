@@ -41,7 +41,7 @@ vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#d8bd92" })
 vim.o.winborder = "rounded"
 
 -- Terminal
-vim.o.shell = "powershell.exe"
+vim.o.shell = "powershell.exe -nologo"
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
 
 --- Keymaps
