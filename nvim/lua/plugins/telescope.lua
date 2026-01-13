@@ -29,9 +29,9 @@ return {
         builtin.current_buffer_fuzzy_find,
         { desc = "Telescope file fuzzy finder" }
       )
-      vim.keymap.set("n", "<leader>fr", builtin.registers, { desc = "Telescope registers" })
       vim.keymap.set("n", "<leader>fq", builtin.quickfix, { desc = "Telescope quickfix" })
       vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "Telescope LPS references" })
+      vim.keymap.set("n", "<leader>sc", builtin.colorscheme, { desc = "Telescope Switch colorscheme" })
 
       vim.keymap.set("n", "<leader>fc", function()
         builtin.find_files({

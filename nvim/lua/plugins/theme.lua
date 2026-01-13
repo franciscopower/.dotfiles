@@ -4,7 +4,15 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("catppuccin")
+			-- vim.cmd.colorscheme("catppuccin")
+		end,
+	},
+	{
+		"AlexvZyl/nordic.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("nordic").load()
 		end,
 	},
 	{
@@ -15,9 +23,9 @@ return {
 			transparent.setup({
 				extra_groups = {
 					"NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
-          "TelescopeBorder",
-          "MiniFilesBorder",
-          "BlinkCmpMenuBorder"
+					"TelescopeBorder",
+					"MiniFilesBorder",
+					"BlinkCmpMenuBorder",
 				},
 			})
 			transparent.clear_prefix("NeoTree")
