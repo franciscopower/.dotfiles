@@ -48,3 +48,10 @@ New-Item -Path $HOME\.config\wezterm -ItemType SymbolicLink -Value .\wezterm
 ```powershell
  New-Item -Path $PROFILE -ItemType SymbolicLink -Value .\windows\Microsoft.PowerShell_profile.ps1
 ```
+
+3 - OpenCode settings
+Note: you first have to install opencode. Then copy default files present in the `~\.config\opencode` directory (which are ignored by git) to the `.\opencode` directory in this repo. Then delete the default opencode directory. Finally run:
+
+```powershell
+New-Item -Path ~\.config\opencode -ItemType SymbolicLink -Value .\opencode
+```
