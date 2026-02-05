@@ -29,6 +29,7 @@ yes | apt install btop
 yes | apt install neofetch
 yes | apt install zsh 
 yes | apt install lazydocker
+yes | apt install zoxide
 
 # lazygit
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
