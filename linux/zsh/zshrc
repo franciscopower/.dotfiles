@@ -2,6 +2,8 @@
 ZSH=$HOME/.dotfiles/linux/zsh
 DOT=$HOME/.dotfiles/linux
 
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
 #set history
 setopt histignorealldups sharehistory
 HISTSIZE=1000
