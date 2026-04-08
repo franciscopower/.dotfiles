@@ -75,6 +75,7 @@ Set-Alias -Name ai -Value GPTerminal.exe
 Set-Alias -Name xp -Value explorer
 #general functions
 function cpath {(Get-Location).Path | Set-Clipboard}
+function link-npm {New-Item -ItemType SymbolicLink -Path "./node_modules" -Target "../main/node_modules"}
 #navigation helpers
 function dev {cd $DevPath}
 function vault {cd $VaultPath}
@@ -96,7 +97,7 @@ function weather($a) {
 function New-MarkdownNote {
     param (
         [string]$FileName = "New Note",
-        [string]$FolderPath = "$ObsidianPath\0 SPARK"
+        [string]$FolderPath = "$ObsidianPath\0 WISPS"
     )
 
     # Ensure the folder exists
