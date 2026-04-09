@@ -59,7 +59,6 @@ return {
       "nvim-neotest/nvim-nio",
     },
     config = function()
-      require("mason").setup()
       require("mason-nvim-dap").setup({
         automatic_installation = true,
         ensure_installed = {

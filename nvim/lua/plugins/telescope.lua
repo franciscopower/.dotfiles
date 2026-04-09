@@ -32,12 +32,6 @@ return {
       vim.keymap.set("n", "<leader>fq", builtin.quickfix, { desc = "Telescope quickfix" })
       vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "Telescope LPS references" })
       vim.keymap.set("n", "<leader>sc", builtin.colorscheme, { desc = "Telescope Switch colorscheme" })
-
-      vim.keymap.set("n", "<leader>fc", function()
-        builtin.find_files({
-          cwd = vim.fn.stdpath("config"),
-        })
-      end, { desc = "Telescope nvim config" })
     end,
   },
 }

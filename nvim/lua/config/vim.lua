@@ -18,12 +18,6 @@ vim.opt.sidescrolloff = 8
 vim.opt.shadafile = "NONE"
 
 vim.opt.signcolumn = "yes"
-vim.diagnostic.config({
-  underline = true,
-  virtual_text = {
-    severity = { min = vim.diagnostic.severity.WARN },
-  },
-})
 
 -- Search
 vim.opt.hlsearch = false
@@ -178,4 +172,4 @@ vim.keymap.set("n", "<leader>cd", function()
   local diagnostic_text = table.concat(diagnostic_messages, "\n")
   vim.fn.setreg("+", diagnostic_text) -- Copy to system clipboard
   print("Diagnostics for '" .. current_word .. "' copied to clipboard")
-end, { buffer = bufnr, remap = false, desc = "Copy diagnostics to clipboard" })
+end, { remap = false, desc = "Copy diagnostics to clipboard" })

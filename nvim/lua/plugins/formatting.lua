@@ -16,7 +16,7 @@ return {
         json = { 'prettier' },
         yaml = { 'prettier' },
         svelte = { 'prettier' },
-        markdwon = { 'prettier' },
+        markdown = { 'prettier' },
       },
       formatters = {
         prettier = {

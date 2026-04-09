@@ -12,7 +12,7 @@ return {
 				hide_during_completion = true,
 				debounce = 75,
 				keymap = {
-					accept = "<C-k>", -- default "<M-l>",
+					accept = "<M-l>",
 					accept_word = false,
 					accept_line = false,
 					next = "<M-]>",
@@ -93,14 +93,6 @@ return {
 						use_absolute_path = true,
 					},
 				},
-			},
-			{
-				-- Make sure to set this up properly if you have lazy=true
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = {
-					file_types = { "markdown", "Avante" },
-				},
-				ft = { "markdown", "Avante" },
 			},
 		},
 	},

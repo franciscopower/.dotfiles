@@ -1,4 +1,4 @@
-local obsidianVaultPath = "C:/Users/pof1av/OneDrive - Bosch Group/Notes"
+local obsidianVaultPath = vim.fn.expand("~") .. "/OneDrive - Bosch Group/Notes"
 
 return {
   "epwalsh/obsidian.nvim",
