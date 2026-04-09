@@ -41,49 +41,27 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
 --- Keymaps
 
 -- CTRL+s to save in normal or input mode
-vim.keymap.set({ "n", "i" }, "<C-s>", function()
-  vim.cmd("w")
-end, { desc = "Save buffer" })
+vim.keymap.set({ "n", "i" }, "<C-s>", "<cmd>w<CR>", { desc = "Save buffer" })
 
 -- Close window
-vim.keymap.set({ "n" }, "<leader>wc", function()
-  vim.cmd("q")
-end, { desc = "Window close" })
+vim.keymap.set({ "n" }, "<leader>wc", "<cmd>q<CR>", { desc = "Window close" })
 
 -- Quickfix list
-vim.keymap.set("n", "<leader>qn", function()
-  vim.cmd("cnext")
-end, { desc = "Quickfix next" })
-vim.keymap.set("n", "<leader>qp", function()
-  vim.cmd("cprev")
-end, { desc = "Quickfix prev" })
-vim.keymap.set("n", "<leader>qo", function()
-  vim.cmd("copen")
-end, { desc = "Quickfix open" })
-vim.keymap.set("n", "<leader>qc", function()
-  vim.cmd("cclose")
-end, { desc = "Quickfix close" })
+vim.keymap.set("n", "<leader>qn", "<cmd>cnext<CR>", { desc = "Quickfix next" })
+vim.keymap.set("n", "<leader>qp", "<cmd>cprev<CR>", { desc = "Quickfix prev" })
+vim.keymap.set("n", "<leader>qo", "<cmd>copen<CR>", { desc = "Quickfix open" })
+vim.keymap.set("n", "<leader>qc", "<cmd>cclose<CR>", { desc = "Quickfix close" })
 
 
 -- close buffer
-vim.keymap.set("n", "<leader>bc", function()
-  vim.cmd("bdelete")
-end, { desc = "Buffer close" })
+vim.keymap.set("n", "<leader>bc", "<cmd>bdelete<CR>", { desc = "Buffer close" })
 -- switch between buffers
-vim.keymap.set("n", "<Leader>bh", function()
-  vim.cmd("bprevious")
-end, { desc = "Buffer previous" })
-vim.keymap.set("n", "<Leader>bl", function()
-  vim.cmd("bnext")
-end, { desc = "Buffer next" })
+vim.keymap.set("n", "<Leader>bh", "<cmd>bprevious<CR>", { desc = "Buffer previous" })
+vim.keymap.set("n", "<Leader>bl", "<cmd>bnext<CR>", { desc = "Buffer next" })
 
 -- Split panes
-vim.keymap.set("n", "<Leader>wv", function()
-  vim.cmd("vsplit")
-end, { desc = "Vertical split" })
-vim.keymap.set("n", "<Leader>wh", function()
-  vim.cmd("split")
-end, { desc = "Horizontal split" })
+vim.keymap.set("n", "<Leader>wv", "<cmd>vsplit<CR>", { desc = "Vertical split" })
+vim.keymap.set("n", "<Leader>wh", "<cmd>split<CR>", { desc = "Horizontal split" })
 -- switch between pane
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Switch to left pane" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Switch to bottom pane" })
@@ -91,34 +69,18 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Switch to top pane" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Switch to right pane" })
 
 -- resize panes
-vim.keymap.set("n", "<C-A-h>", function()
-  vim.cmd("vertical resize -5")
-end, { desc = "Resize pane larger" })
-vim.keymap.set("n", "<C-A-l>", function()
-  vim.cmd("vertical resize +5")
-end, { desc = "Resize pane larger" })
-vim.keymap.set("n", "<C-A-j>", function()
-  vim.cmd("horizontal resize -5")
-end, { desc = "Resize pane larger" })
-vim.keymap.set("n", "<C-A-k>", function()
-  vim.cmd("horizontal resize +5")
-end, { desc = "Resize pane larger" })
+vim.keymap.set("n", "<C-A-h>", "<cmd>vertical resize -5<CR>", { desc = "Resize pane left (shrink)" })
+vim.keymap.set("n", "<C-A-l>", "<cmd>vertical resize +5<CR>", { desc = "Resize pane right (grow)" })
+vim.keymap.set("n", "<C-A-j>", "<cmd>horizontal resize -5<CR>", { desc = "Resize pane down (shrink)" })
+vim.keymap.set("n", "<C-A-k>", "<cmd>horizontal resize +5<CR>", { desc = "Resize pane up (grow)" })
 
 -- swtich between tabs
-vim.keymap.set("n", "<leader>th", function()
-  vim.cmd("tabprevious")
-end, { desc = "Tab previous" })
-vim.keymap.set("n", "<leader>tl", function()
-  vim.cmd("tabnext")
-end, { desc = "Tab next" })
+vim.keymap.set("n", "<leader>th", "<cmd>tabprevious<CR>", { desc = "Tab previous" })
+vim.keymap.set("n", "<leader>tl", "<cmd>tabnext<CR>", { desc = "Tab next" })
 -- close tab
-vim.keymap.set("n", "<leader>tc", function()
-  vim.cmd("tabclose")
-end, { desc = "Tab close" })
+vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "Tab close" })
 -- new tab
-vim.keymap.set("n", "<leader>tn", function()
-  vim.cmd("tabnew")
-end, { desc = "Tab new" })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "Tab new" })
 
 -- keep cursor in the middle with certain moves
 vim.keymap.set("n", "J", "mzJ`z")
@@ -160,7 +122,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Keymap to copy current diagnostics to the system clipboard
-vim.keymap.set("n", "<leader>cd", function()
+vim.keymap.set("n", "<leader>dy", function()
   local current_word = vim.fn.expand("<cword>") -- Get the word under the cursor
   local diagnostics = vim.diagnostic.get(0)    -- Get diagnostics for the current buffer
   local diagnostic_messages = {}
