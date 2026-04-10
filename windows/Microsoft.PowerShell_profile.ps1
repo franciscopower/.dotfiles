@@ -55,6 +55,7 @@ function choco {
 }
 
 #Constants
+[System.Environment]::SetEnvironmentVariable("NVIM_AI", "1", "User")
 $VaultPath = "$HOME\VAULT"
 $ObsidianPath = "$HOME\Notes"
 $DevPath = "C:\dev"
