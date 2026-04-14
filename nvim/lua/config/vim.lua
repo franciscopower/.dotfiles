@@ -16,6 +16,8 @@ vim.opt.splitbelow = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.shadafile = "NONE"
+vim.opt.iskeyword:append("-")
+vim.opt.mouse = "a"
 
 vim.opt.signcolumn = "yes"
 
@@ -77,13 +79,12 @@ vim.keymap.set("n", "<C-A-l>", "<cmd>vertical resize +5<CR>", { desc = "Resize p
 vim.keymap.set("n", "<C-A-j>", "<cmd>horizontal resize -5<CR>", { desc = "Resize pane down (shrink)" })
 vim.keymap.set("n", "<C-A-k>", "<cmd>horizontal resize +5<CR>", { desc = "Resize pane up (grow)" })
 
--- swtich between tabs
+-- Tabs
 vim.keymap.set("n", "<leader>th", "<cmd>tabprevious<CR>", { desc = "Tab previous" })
 vim.keymap.set("n", "<leader>tl", "<cmd>tabnext<CR>", { desc = "Tab next" })
--- close tab
 vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "Tab close" })
--- new tab
 vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "Tab new" })
+vim.keymap.set("n", "<leader>to", "<cmd>tabonly<CR>", { desc = "Tab only" })
 
 -- keep cursor in the middle with certain moves
 vim.keymap.set("n", "J", "mzJ`z")
