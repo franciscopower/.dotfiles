@@ -33,75 +33,41 @@ return {
 			},
 		},
 	},
-	-- Avante Configuration
 	{
-		"yetone/avante.nvim",
-		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-		-- ⚠️ must add this setting! ! !
-		build = vim.fn.has("win32") ~= 0
-				and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-			or "make",
-		event = "VeryLazy",
-		version = false, -- Never set this value to "*"! Never!
-		---@module 'avante'
-		---@type avante.Config
-		opts = {
-			-- this file can contain specific instructions for your project
-			instructions_file = "AGENTS.md",
+		"nickjvandyke/opencode.nvim",
+		version = "*", -- Latest stable release
+		config = function()
+			---@type opencode.Opts
+			vim.g.opencode_opts = {
+				-- Your configuration, if any; goto definition on the type or field for details
+			}
 
-			provider = "copilot",
-			auto_suggestions_provider = "copilot",
-			behaviour = {
-				support_paste_from_clipboard = true,
-				enable_token_counting = false,
-			},
-			hints = { enabled = false },
-			selector = { provider = "telescope" },
-			input = { provider = "snacks" },
-			sidebar = {
-				switch_windows = false,
-			},
-			acp_providers = {
-				["opencode"] = {
-					command = "opencode",
-					args = { "acp" },
-				},
-			},
-		},
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			--- The below dependencies are optional,
-			"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-			"folke/snacks.nvim", -- for input provider snacks
-			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-			"zbirenbaum/copilot.lua", -- for providers='copilot'
-			{
-				-- support for image pasting
-				"HakonHarnes/img-clip.nvim",
-				event = "VeryLazy",
-				opts = {
-					-- recommended settings
-					default = {
-						embed_image_as_base64 = false,
-						prompt_for_file_name = false,
-						drag_and_drop = {
-							insert_mode = true,
-						},
-						-- required for Windows users
-						use_absolute_path = true,
-					},
-				},
-			},
-			{
-				-- Make sure to set this up properly if you have lazy=true
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = {
-					file_types = { "markdown", "Avante" },
-				},
-				ft = { "markdown", "Avante" },
-			},
-		},
+			vim.o.autoread = true -- Required for `opts.events.reload`
+
+			-- Recommended/example keymaps
+			vim.keymap.set({ "n", "x" }, "<leader>aa", function()
+				require("opencode").ask("@this: ", { submit = true })
+			end, { desc = "Ask opencode…" })
+			vim.keymap.set({ "n", "x" }, "<leader>ax", function()
+				require("opencode").select()
+			end, { desc = "Execute opencode action…" })
+			vim.keymap.set({ "n", "t" }, "<leader>ao", function()
+				require("opencode").toggle()
+			end, { desc = "Toggle opencode" })
+
+			vim.keymap.set({ "n", "x" }, "<leader>ar", function()
+				return require("opencode").operator("@this ")
+			end, { desc = "Add range to opencode", expr = true })
+			vim.keymap.set("n", "<leader>al", function()
+				return require("opencode").operator("@this ") .. "_"
+			end, { desc = "Add line to opencode", expr = true })
+
+			vim.keymap.set("n", "<S-C-u>", function()
+				require("opencode").command("session.half.page.up")
+			end, { desc = "Scroll opencode up" })
+			vim.keymap.set("n", "<S-C-d>", function()
+				require("opencode").command("session.half.page.down")
+			end, { desc = "Scroll opencode down" })
+		end,
 	},
 }
