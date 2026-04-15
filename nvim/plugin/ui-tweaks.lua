@@ -2,6 +2,7 @@ vim.schedule(function()
 	vim.pack.add({
 		"https://github.com/sphamba/smear-cursor.nvim",
 		"https://github.com/nanozuki/tabby.nvim",
+		"https://github.com/karb94/neoscroll.nvim",
 	})
 
 	require("smear_cursor").setup({
@@ -16,4 +17,6 @@ vim.schedule(function()
 
 	require("tabby").setup()
 	vim.keymap.set("n", "<leader>tj", "<cmd>Tabby jump_to_tab<CR>", { desc = "Jump to tab" })
+
+	require("neoscroll").setup()
 end)
