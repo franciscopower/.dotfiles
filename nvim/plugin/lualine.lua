@@ -2,6 +2,8 @@ vim.pack.add({
 	"https://github.com/nvim-lualine/lualine.nvim",
 })
 
+local lsp_progress = vim.ui.progress_status()
+
 require("lualine").setup({
 	options = {
 		component_separators = "",
@@ -15,7 +17,7 @@ require("lualine").setup({
 		lualine_c = {
 			"%=", --[[ add your center compoentnts here in place of this comment ]]
 		},
-		lualine_x = {},
+		lualine_x = { lsp_progress },
 		lualine_y = { "filetype", "progress" },
 		lualine_z = {
 			{ "location", separator = { right = "" }, left_padding = 2 },
