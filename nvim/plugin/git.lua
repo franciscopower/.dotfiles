@@ -19,6 +19,24 @@ vim.keymap.set("n", "<leader>gu", gs.undo_stage_hunk, { desc = "Git - unstage hu
 vim.keymap.set("n", "<leader>gr", gs.reset_hunk, { desc = "Git - reset hunk" })
 vim.keymap.set("n", "<leader>gb", gs.toggle_current_line_blame, { desc = "Git - toggle current line blame" })
 vim.keymap.set("n", "<leader>gdt", gs.diffthis, { desc = "Git - diffview current file" })
+vim.keymap.set("n", "<leader>gq", gs.setqflist, { desc = "Git - set quick-fix list" })
+vim.keymap.set("n", "<leader>gQ", function()
+	gs.setqflist("all")
+end, { desc = "Git - set quick-fix list - ALL" })
+vim.keymap.set("n", "<leader>gn", function()
+	if vim.wo.diff then
+		vim.cmd.normal({ "]c", bang = true })
+	else
+		gs.nav_hunk("next")
+	end
+end, { desc = "Git - go to next change" })
+vim.keymap.set("n", "<leader>gN", function()
+	if vim.wo.diff then
+		vim.cmd.normal({ "]c", bang = true })
+	else
+		gs.nav_hunk("prev")
+	end
+end, { desc = "Git - go to prev change" })
 
 -- NeoGit setup
 local neogit = require("neogit")
