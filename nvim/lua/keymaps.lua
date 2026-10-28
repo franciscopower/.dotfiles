@@ -1,3 +1,4 @@
+vim.keymap.set({ "n", "i", "v" }, "çç", "<Esc>")
 -- CTRL+s to save in normal or input mode
 vim.keymap.set({ "n", "i" }, "<C-s>", "<cmd>w<CR>", { desc = "Save buffer" })
 
