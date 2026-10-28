@@ -10,6 +10,8 @@ This repository contains my windows and linux setups, as well as the configurati
     - [NVim for windows](https://neovim.io/)
 1. C Compiler (gcc)
     - For windows: [MSYS2](https://code.visualstudio.com/docs/languages/cpp)
+2. Treesitter CLI (tree-sitter)
+    - [Treesitter github](https://github.com/tree-sitter/tree-sitter/releases)
 
 ## Configuration on Windows
 
